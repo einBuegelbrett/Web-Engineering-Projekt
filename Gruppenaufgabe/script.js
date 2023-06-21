@@ -32,7 +32,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
         // Hinzufügen eines Knopfes zum Löschen des Pokemons
         let removeFromTeam = document.createElement("button");
-        removeFromTeam.innerHTML = "Do Something";
+        removeFromTeam.innerHTML = "Delete Pokémom";
         listItem.appendChild(removeFromTeam);
         removeFromTeam.addEventListener ("click", function() {
           console.log('Mupmiep');
