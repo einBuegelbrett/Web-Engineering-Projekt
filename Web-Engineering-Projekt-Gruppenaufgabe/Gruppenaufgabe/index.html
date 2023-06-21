@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Team Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pokémon Team Builder</h1>
+  </header>
+  <main>
+    <section id="pokemon-selection">
+      <h2>Select Pokémon:</h2>
+      <ul id="pokemon-list">
+        <!-- Dynamically generated list of Pokémon -->
+      </ul>
+        <select id="pokemon-dropdown">
+          <option value="">Select a Pokémon</option>
+        </select>
+    </section>
+    
+    <section id="team-builder">
+      <h2 >Your Team:</h2>
+      <ul id="team-list">
+        <button id="add-to-team">Add to Team</button>
+      </ul>
+    </section>
+    
+    <section id="team-info">
+      <h2>Team Information:</h2>
+      <div id="team-details">
+      </div>
+    </section>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
