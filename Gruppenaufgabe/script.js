@@ -6,7 +6,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
   .then(response => response.json())
   .then(data => {
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
-    const addToTeamBtn = document.getElementById("team-builder");
+    const addToTeamBtn = document.getElementById("add-to-team");
     const teamList = document.getElementById("team-list");
 
 
@@ -23,14 +23,23 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     addToTeamBtn.addEventListener("click", () => {
       const selectedPokemon = pokemonDropdown.value;
 
-      if (selectedPokemon && size_team < max_pokemon_team && listItem.textContent != selectedPokemon) {
+      if (selectedPokemon && size_team < max_pokemon_team) {
         size_team++;
         const listItem = document.createElement("li");
         listItem.textContent = selectedPokemon;
-
-
         teamList.appendChild(listItem);
         console.log('Miepmup');
+
+        // Hinzufügen eines Knopfes zum Löschen des Pokemons
+        let removeFromTeam = document.createElement("button");
+        removeFromTeam.innerHTML = "Do Something";
+        listItem.appendChild(removeFromTeam);
+        removeFromTeam.addEventListener ("click", function() {
+          console.log('Mupmiep');
+          size_team--;
+          teamList.removeChild(listItem);
+          console.log('Miepmiep');
+        });
       }
     });
   })
