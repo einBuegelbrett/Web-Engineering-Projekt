@@ -1,4 +1,4 @@
-const token = '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';
+const token = '';
 
 function fetchButton() {
     const input = document.getElementById('password').value;
