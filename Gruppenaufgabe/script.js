@@ -10,14 +10,19 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
     const addToTeamBtn = document.getElementById("add-to-team");
     const teamList = document.getElementById("team-list");
+    const teamInformation = document.getElementById("single-pokemons");
 
+        // Store the Pokémon details for image retrieval
+        const pokemonDetails = data.results.reduce((details, pokemon) => {
+          details[pokemon.name] = pokemon.url;
+          return details;
+        }, {});
 
     // Loop through the fetched results and create options for the dropdown
     data.results.forEach(pokemon => {
       const option = document.createElement("option");
       option.value = pokemon.name;
       option.textContent = pokemon.name;
-
       pokemonDropdown.appendChild(option);
     });
 
@@ -30,6 +35,23 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         const listItem = document.createElement("li");
         listItem.textContent = selectedPokemon;
         teamList.appendChild(listItem);
+
+                // Retrieve the Pokémon details including the image URL
+                const pokemonURL = pokemonDetails[selectedPokemon];
+                fetch(pokemonURL)
+                  .then(response => response.json())
+                  .then(pokemonData => {
+                    const pokemonImage = pokemonData.sprites.front_default;
+                    if (pokemonImage) {
+                      const imageElement = document.createElement("img");
+                      imageElement.src = pokemonImage;
+                      imageElement.alt = selectedPokemon;
+                      //listItem.appendChild(imageElement);
+                      teamInformation.appendChild(imageElement);
+                    }                    
+                  })
+
+
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
         console.log(pokemonTeam);
@@ -39,15 +61,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         removeFromTeam.innerHTML = "Delete Pokémon";
         listItem.appendChild(removeFromTeam);
         removeFromTeam.addEventListener ("click", function() {
+
           // delete pokemon from array
-          /*
-          for(i = 0; i < 6; i++) {
-            if(pokemonTeam[i] == listItem) {
-              pokemonTeam[size_team-1] = "";
-              console.log(pokemonTeam);
-            }
-          }
-          */
           const listItem = this.parentNode;
           const pokemonName = listItem.textContent.replace("Delete Pokémon", "").trim();;
           console.log(pokemonTeam + " " + pokemonName)
