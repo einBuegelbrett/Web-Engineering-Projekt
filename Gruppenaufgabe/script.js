@@ -26,6 +26,36 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
       pokemonDropdown.appendChild(option);
     });
 
+    const generateTeamImages = () => {
+      teamInformation.innerHTML = '';
+
+      for (let i = 0; i < size_team; i++) {
+        const pokemonName = pokemonTeam[i];
+        console.log("jaaa");
+        if (pokemonName) {
+          const listItem = document.createElement("li");
+          listItem.textContent = pokemonName;
+
+          // Retrieve the Pokémon details including the image URL
+          const pokemonURL = pokemonDetails[pokemonName];
+          fetch(pokemonURL)
+            .then(response => response.json())
+            .then(pokemonData => {
+              const pokemonImage = pokemonData.sprites.front_default;
+              if (pokemonImage) {
+                const imageElement = document.createElement("img");
+                imageElement.src = pokemonImage;
+                imageElement.alt = pokemonName;
+                listItem.appendChild(imageElement);
+              }
+            })
+            .catch(error => {
+              console.log("Error fetching Pokémon details:", error);
+            });
+
+            teamInformation.appendChild(listItem); // Append the <li> element to the team list
+        }}}
+
     // Add event listener to the "Add to Team" button
     addToTeamBtn.addEventListener("click", () => {
       const selectedPokemon = pokemonDropdown.value;
@@ -36,25 +66,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         listItem.textContent = selectedPokemon;
         teamList.appendChild(listItem);
 
-                // Retrieve the Pokémon details including the image URL
-                const pokemonURL = pokemonDetails[selectedPokemon];
-                fetch(pokemonURL)
-                  .then(response => response.json())
-                  .then(pokemonData => {
-                    const pokemonImage = pokemonData.sprites.front_default;
-                    if (pokemonImage) {
-                      const imageElement = document.createElement("img");
-                      imageElement.src = pokemonImage;
-                      imageElement.alt = selectedPokemon;
-                      //listItem.appendChild(imageElement);
-                      teamInformation.appendChild(imageElement);
-                    }                    
-                  })
-
-
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
         console.log(pokemonTeam);
+        generateTeamImages();
 
         // Hinzufügen eines Knopfes zum Löschen des Pokemons
         let removeFromTeam = document.createElement("button");
@@ -82,6 +97,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
           size_team--;
           teamList.removeChild(listItem);
           console.log('Miepmiep');
+          generateTeamImages();
         });
       }
     });
