@@ -1,7 +1,9 @@
-// Fetch Pokémon data from the PokeAPI
+// Globale Varbiablen
 const max_pokemon_team = 6;
 let size_team = 0;
+const pokemonTeam = ["", "", "", "", "", ""];
 
+// Fetch Pokémon data from the PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
   .then(response => response.json())
   .then(data => {
@@ -28,13 +30,39 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         const listItem = document.createElement("li");
         listItem.textContent = selectedPokemon;
         teamList.appendChild(listItem);
-        console.log('Miepmup');
+        // add pokemon to array
+        pokemonTeam[size_team-1] = selectedPokemon;
+        console.log(pokemonTeam);
 
         // Hinzufügen eines Knopfes zum Löschen des Pokemons
         let removeFromTeam = document.createElement("button");
-        removeFromTeam.innerHTML = "Delete Pokémom";
+        removeFromTeam.innerHTML = "Delete Pokémon";
         listItem.appendChild(removeFromTeam);
         removeFromTeam.addEventListener ("click", function() {
+          // delete pokemon from array
+          /*
+          for(i = 0; i < 6; i++) {
+            if(pokemonTeam[i] == listItem) {
+              pokemonTeam[size_team-1] = "";
+              console.log(pokemonTeam);
+            }
+          }
+          */
+          const listItem = this.parentNode;
+          const pokemonName = listItem.textContent.replace("Delete Pokémon", "").trim();;
+          console.log(pokemonTeam + " " + pokemonName)
+          const pokemonIndex = pokemonTeam.findIndex(
+            name => name.toLowerCase() === pokemonName.toLowerCase()
+          );
+          console.log(pokemonIndex);
+          if (pokemonIndex !== -1) {
+            pokemonTeam[pokemonIndex] = "";
+            for (let i = pokemonIndex; i < pokemonTeam.length; i++) {
+              pokemonTeam[i] = pokemonTeam[i + 1];
+            }
+            console.log(pokemonTeam);
+          }
+          
           console.log('Mupmiep');
           size_team--;
           teamList.removeChild(listItem);

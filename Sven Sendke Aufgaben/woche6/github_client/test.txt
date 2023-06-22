@@ -1,0 +1,1 @@
+curl -L -H "Authorization: Bearer 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" https://api.github.com/user/repos
