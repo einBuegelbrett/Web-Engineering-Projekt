@@ -41,6 +41,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
           fetch(pokemonURL)
             .then(response => response.json())
             .then(pokemonData => {
+              console.log(pokemonData);
               const pokemonImage = pokemonData.sprites.front_default;
               if (pokemonImage) {
                 const imageElement = document.createElement("img");
@@ -53,6 +54,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
               console.log("Error fetching Pokémon details:", error);
             })
             .then(() => teamInformation.appendChild(listItem)) // Append the <li> element to the team list
+            .then(() => generatePokemonTypes(pokemonName, listItem))
             .then(() => generateAbilitiesDropdown(pokemonName, listItem))
             .then(() => generateMovesDropdown(pokemonName, listItem))
             .then(() => generatePokemonStats(pokemonName, listItem))
@@ -117,19 +119,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     }
 
     function generatePokemonStats(pokemonName, listItem) {
-      // kreiert die abilities dropdown
       fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       .then(response => response.json())
       .then(data => {
         const stats = data.stats;
         console.log(stats);
-        
-        const dropdown = document.createElement("select");
-        dropdown.classList.add("pokemon-moves-dropdown");
-        const defaultOption = document.createElement("option");
-        defaultOption.value = "";
-        defaultOption.textContent = "Select a move" ;
-        dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < stats.length; i++) {
           const pElement = document.createElement("p");
@@ -140,31 +134,26 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
                 listItem.appendChild(pElement);
                 break;
               case 1:
-                console.log('attack');
                 pElement.value = 'attack: ' + stats[i].base_stat;
                 pElement.textContent = 'attack: ' + stats[i].base_stat;
                 listItem.appendChild(pElement);
                 break;
               case 2:
-                console.log('defence');
                 pElement.value = 'defence: ' + stats[i].base_stat;
                 pElement.textContent = 'defence: ' + stats[i].base_stat;
                 listItem.appendChild(pElement);
                 break;
               case 3:
-                console.log('special-attack');
                 pElement.value = 'special attack: ' + stats[i].base_stat;
                 pElement.textContent = 'special attack: ' + stats[i].base_stat;
                 listItem.appendChild(pElement);
                 break;
               case 4:
-                console.log('special-defense');
                 pElement.value = 'special defense: ' + stats[i].base_stat;
                 pElement.textContent = 'special defense: ' + stats[i].base_stat;
                 listItem.appendChild(pElement);
                 break;
               case 5:
-                  console.log('speed');
                   pElement.value = 'speed: ' + stats[i].base_stat;
                   pElement.textContent = 'speed: ' + stats[i].base_stat;
                   listItem.appendChild(pElement);
@@ -172,12 +161,38 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
               default:
                 console.log("error");
             }
-          
-          //option.value = stats[i];
-          //option.textContent = stats[i];
-          //dropdown.appendChild(option);
         }
+      })
+    }
+
+    function generatePokemonTypes(pokemonName, listItem) {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .then(response => response.json())
+      .then(data => {
+        
+        const types = data.types;
+        console.log(types);
+
+        //const dropdown = document.createElement("p");
+        //dropdown.classList.add("pokemon-abilities-dropdown");
+  
+        //const defaultOption = document.createElement("option");
+        //defaultOption.value = "";
+        //defaultOption.textContent = "Select an ability" ;
+        //dropdown.appendChild(defaultOption);
+        let typeName = "Type(s): ";
+        for (let i = 0; i < types.length; i++) {
+          typeName += types[i].type.name + " ";
+        }
+        const typeTextfeld = document.createElement("p");
+        typeTextfeld.value = typeName;
+        //console.log(abilities.length);
+        typeTextfeld.textContent = typeName;
+        listItem.appendChild(typeTextfeld);
+        //pokemonAbilitiesContainer.appendChild(dropdown);
+        //console.log(dropdown);
         //listItem.appendChild(dropdown);
+        //return dropdown;
       })
     }
 
