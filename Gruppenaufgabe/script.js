@@ -52,13 +52,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
             .catch(error => {
               console.log("Error fetching Pokémon details:", error);
             })
-            .then(generateAbilitiesDropdown(pokemonName, listItem))
-            .then(generateMovesDropdown(pokemonName, listItem))
-            .then(generatePokemonStats(pokemonName, listItem))
-            .then(teamInformation.appendChild(listItem)) // Append the <li> element to the team list
-            
-            
-            
+            .then(() => teamInformation.appendChild(listItem)) // Append the <li> element to the team list
+            .then(() => generateAbilitiesDropdown(pokemonName, listItem))
+            .then(() => generateMovesDropdown(pokemonName, listItem))
+            .then(() => generatePokemonStats(pokemonName, listItem))
+       
     }}}
 
     function generateAbilitiesDropdown(pokemonName, listItem) {
