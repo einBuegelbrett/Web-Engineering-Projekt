@@ -27,7 +27,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
       pokemonDropdown.appendChild(option);
     });
 
-    const generateTeamImages = () => {
+    function generateTeamImages() {
       teamInformation.innerHTML = '';
 
       for (let i = 0; i < size_team; i++) {
@@ -35,39 +35,42 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         if (pokemonName) {
           const listItem = document.createElement("li");
           listItem.textContent = pokemonName;
-
-          // Retrieve the Pokémon details including the image URL
           const pokemonURL = pokemonDetails[pokemonName];
           fetch(pokemonURL)
             .then(response => response.json())
-            .then(pokemonData => {
-              console.log(pokemonData);
-              const pokemonImage = pokemonData.sprites.front_default;
-              if (pokemonImage) {
-                const imageElement = document.createElement("img");
-                imageElement.src = pokemonImage;
-                imageElement.alt = pokemonName;
-                listItem.appendChild(imageElement);
-              }
-            })
-            .catch(error => {
-              console.log("Error fetching Pokémon details:", error);
-            })
-            .then(() => teamInformation.appendChild(listItem)) // Append the <li> element to the team list
-            .then(() => generatePokemonTypes(pokemonName, listItem))
-            .then(() => generateAbilitiesDropdown(pokemonName, listItem))
-            .then(() => generateMovesDropdown(pokemonName, listItem))
-            .then(() => generatePokemonStats(pokemonName, listItem))
-       
+            .then(data => generatePokemonImage(pokemonName, listItem, data))
+            .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)) 
+          .then(response => response.json())
+          .then(data => {
+            teamInformation.appendChild(listItem) // Append the <li> element to the team list
+            generatePokemonTypes(listItem, data)
+            return data;
+          })
+          .then(data => generateAbilitiesDropdown(listItem, data))
+          .then(data => generateMovesDropdown(listItem, data))
+          .then(data => generatePokemonStats(listItem, data));
     }}}
 
-    function generateAbilitiesDropdown(pokemonName, listItem) {
+    function generatePokemonImage(pokemonName, listItem, data) {
+      // Retrieve the Pokémon details including the image URL  
+            console.log(data);
+            //console.log(pokemonData);
+            const pokemonImage = data.sprites.front_default;
+            if (pokemonImage) {
+              const imageElement = document.createElement("img");
+              imageElement.src = pokemonImage;
+              imageElement.alt = pokemonName;
+              listItem.appendChild(imageElement);
+            }
+
+            return data;
+      }
+
+    function generateAbilitiesDropdown(listItem, data) {
       // kreiert die abilities dropdown
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-      .then(response => response.json())
-      .then(characteristic => {
-        
-        const abilities = characteristic.abilities;
+      console.log("abilities");
+        console.log(data);
+        const abilities = data.abilities;
         console.log(abilities);
 
         const dropdown = document.createElement("select");
@@ -89,14 +92,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         console.log(dropdown);
         listItem.appendChild(dropdown);
         //return dropdown;
-      })
+
+        return data;
     }
 
-    function generateMovesDropdown(pokemonName, listItem) {
+    function generateMovesDropdown(listItem, data) {
       // kreiert die abilities dropdown
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-      .then(response => response.json())
-      .then(data => {
         const pokemonMoves = data.moves;
         
         for (let i = 0; i < 4; i++) {
@@ -115,13 +116,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
           }
           listItem.appendChild(dropdown);
       }
-      })
-    }
 
-    function generatePokemonStats(pokemonName, listItem) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-      .then(response => response.json())
-      .then(data => {
+      return data;
+      }
+
+    function generatePokemonStats(listItem, data) {
         const stats = data.stats;
         console.log(stats);
         
@@ -162,24 +161,14 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
                 console.log("error");
             }
         }
-      })
+        return data;
     }
 
-    function generatePokemonTypes(pokemonName, listItem) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-      .then(response => response.json())
-      .then(data => {
+    function generatePokemonTypes(listItem, data) {
         
         const types = data.types;
         console.log(types);
 
-        //const dropdown = document.createElement("p");
-        //dropdown.classList.add("pokemon-abilities-dropdown");
-  
-        //const defaultOption = document.createElement("option");
-        //defaultOption.value = "";
-        //defaultOption.textContent = "Select an ability" ;
-        //dropdown.appendChild(defaultOption);
         let typeName = "Type(s): ";
         for (let i = 0; i < types.length; i++) {
           typeName += types[i].type.name + " ";
@@ -189,11 +178,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         //console.log(abilities.length);
         typeTextfeld.textContent = typeName;
         listItem.appendChild(typeTextfeld);
-        //pokemonAbilitiesContainer.appendChild(dropdown);
-        //console.log(dropdown);
-        //listItem.appendChild(dropdown);
-        //return dropdown;
-      })
+
+        return data;
     }
 
     // Add event listener to the "Add to Team" button
