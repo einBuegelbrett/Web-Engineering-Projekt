@@ -40,20 +40,61 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
             .then(response => response.json())
             .then(data => generatePokemonImage(pokemonName, listItem, data))
             .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)) 
-          .then(response => response.json())
-          .then(data => {
-            teamInformation.appendChild(listItem) // Append the <li> element to the team list
-            generatePokemonTypes(listItem, data)
-            return data;
-          })
-          .then(data => generateAbilitiesDropdown(listItem, data))
-          .then(data => generateMovesDropdown(listItem, data))
-          .then(data => generatePokemonStats(listItem, data));
+            .then(response => response.json())
+            .then(data => {
+              teamInformation.appendChild(listItem) // Append the <li> element to the team list
+              generatePokemonTypes(listItem, data)
+              return data;
+            })
+            .then(data => generateAbilitiesDropdown(listItem, data))
+            .then(data => generateMovesDropdown(listItem, data))
+            .then(data => generatePokemonStats(listItem, data));
+          
+          fetch(`https://pokeapi.co/api/v2/item/`)
+            .then(response => response.json())
+            .then(items => {
+              //console.log("item");
+              console.log(items);
+              generateItemDropdown(listItem, items); 
+            })
     }}}
+
+    function generateItemDropdown(listItem, data) {
+        const items = data;
+        console.log("MabMap")
+        console.log(items);
+
+        const dropdown = document.createElement("select");
+
+        dropdown.classList.add("pokemon-items-dropdown");
+  
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Select an Item" ;
+        dropdown.appendChild(defaultOption);
+        
+        for (let i = 0; i < 1; i++) {
+          
+          const option = document.createElement("option");
+          option.value = items.names[4].name;
+          console.log("MiupMiup");
+          console.log(items.names[4].name);
+          option.textContent = items.names[4].name;
+          dropdown.appendChild(option);
+
+        }
+        //pokemonAbilitiesContainer.appendChild(dropdown);
+        console.log(dropdown);
+        listItem.appendChild(dropdown);
+        //return dropdown;
+
+        return data;
+    }
+
 
     function generatePokemonImage(pokemonName, listItem, data) {
       // Retrieve the Pokémon details including the image URL  
-            console.log(data);
+            //console.log(data);
             //console.log(pokemonData);
             const pokemonImage = data.sprites.front_default;
             if (pokemonImage) {
@@ -68,10 +109,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
     function generateAbilitiesDropdown(listItem, data) {
       // kreiert die abilities dropdown
-      console.log("abilities");
-        console.log(data);
+      //console.log("abilities");
+        //console.log(data);
         const abilities = data.abilities;
-        console.log(abilities);
+        //console.log(abilities);
 
         const dropdown = document.createElement("select");
         dropdown.classList.add("pokemon-abilities-dropdown");
@@ -84,12 +125,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         for (let i = 0; i < abilities.length; i++) {
           const option = document.createElement("option");
           option.value = abilities[i].ability.name;
-          console.log(abilities.length);
+          //console.log(abilities.length);
           option.textContent = abilities[i].ability.name;
           dropdown.appendChild(option);
         }
         //pokemonAbilitiesContainer.appendChild(dropdown);
-        console.log(dropdown);
+        //console.log(dropdown);
         listItem.appendChild(dropdown);
         //return dropdown;
 
@@ -122,7 +163,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
     function generatePokemonStats(listItem, data) {
         const stats = data.stats;
-        console.log(stats);
+        //console.log(stats);
         
         for (let i = 0; i < stats.length; i++) {
           const pElement = document.createElement("p");
@@ -167,7 +208,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     function generatePokemonTypes(listItem, data) {
         
         const types = data.types;
-        console.log(types);
+        //console.log(types);
 
         let typeName = "Type(s): ";
         for (let i = 0; i < types.length; i++) {
@@ -197,7 +238,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
-        console.log(pokemonTeam);
+        //console.log(pokemonTeam);
         generateTeamImages();
 
         //generateAbilitiesDropdown(selectedPokemon, listItem);
@@ -215,21 +256,21 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
           // delete pokemon from array
           const listItem = this.parentNode;
-          const pokemonName = listItem.textContent.replace("Delete Pokémon", "").trim();;
-          console.log(pokemonTeam + " " + pokemonName)
+          const pokemonName = listItem.textContent.replace("Delete Pokémon", "");
+          //console.log(pokemonTeam + " " + pokemonName)
           const pokemonIndex = pokemonTeam.findIndex(
             name => name.toLowerCase() === pokemonName.toLowerCase()
           );
-          console.log(pokemonIndex);
+          //console.log(pokemonIndex);
           if (pokemonIndex !== -1) {
             pokemonTeam[pokemonIndex] = "";
             for (let i = pokemonIndex; i < pokemonTeam.length; i++) {
               pokemonTeam[i] = pokemonTeam[i + 1];
             }
-            console.log(pokemonTeam);
+            //console.log(pokemonTeam);
           }
           
-          console.log('Mupmiep');
+          //console.log('Mupmiep');
           size_team--;
           teamList.removeChild(listItem);
           console.log('Miepmiep');
