@@ -108,18 +108,18 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  .pokemon-table {
+  .type-table {
   width: 50%;
   border-collapse: collapse;
 }
 
-.pokemon-table th {
+.type-table th {
   padding: 2px;
   text-align: center;
   border: 1px solid #ccc;
 }
 
-.pokemon-table td {
+.type-table td {
   padding: 5px;
   text-align: center;
   border: 1px solid #ccc;
@@ -145,30 +145,58 @@ body {
   align-items: stretch;
 }
 
+#team-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.pokemon-slot {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#single-pokemons li {
+  width: 60%;
+}
+
+#single-pokemons p {
+  font-size: 80%;
+}
+
+#single-pokemons select {
+  font-size: 80%;
+}
+
+
 @media (min-width: 600px) {
 
   #pokemon-selection {
     flex-basis: 50%;
     padding-right: 10px;
   }
+
   #type-coverage {
     flex-basis: 50%;
     padding-left: 10px;
     width: 30%;
   }
   
- .pokemon-table {
+ .type-table {
    width: 80%;
    border-collapse: collapse;
  }
  
- .pokemon-table th {
+ .type-table th {
    padding: 10px;
    text-align: center;
    border: 1px solid #ccc;
  }
  
- .pokemon-table td {
+ .type-table td {
    padding: 10px;
    text-align: center;
    border: 1px solid #ccc;

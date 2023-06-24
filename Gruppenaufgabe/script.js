@@ -2,7 +2,6 @@
 const max_pokemon_team = 6;
 let size_team = 0;
 const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, undefined];
-let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, "rock": 0, "bug": 0, "ghost": 0, "steel": 0, "fire": 0, "water": 0, "grass": 0, "electric": 0, "psychic": 0, "ice": 0, "dragon": 0, "dark": 0, "fairy": 0 };
 
 // Fetch Pokémon data from the PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
@@ -28,10 +27,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       pokemonDropdown.appendChild(option);
     });
 
-    function generateTeamImages(pokemonName) {
-     // teamInformation.innerHTML = '';
-    //  for (let i = 0; i < size_team; i++) {
-       // const pokemonName = pokemonTeam[i];
+    function generateTeamImages() {
+      teamInformation.innerHTML = '';
+      for (let i = 0; i < size_team; i++) {
+        const pokemonName = pokemonTeam[i];
         if (pokemonName) {
           const listItem = document.createElement("li");
           listItem.textContent = pokemonName;
@@ -50,23 +49,16 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then(data => generateMovesDropdown(listItem, data))
             .then(data => generatePokemonStats(listItem, data))
             .then(data => generateDeleteButton(listItem, data))
-            .then(() => fetch('https://pokeapi.co/api/v2/item/?limit=2050'))
+            .then();
+          
+          fetch('https://pokeapi.co/api/v2/item/?limit=2050')
             .then(response => response.json())
             .then(items => {
+
               console.log(items);
               generateItemDropdown(listItem, items); 
             })
-            console.log(size_team)
-    }}//}
-
-    function generatePokemonTableTypes(type) {
-      if(dict.hasOwnProperty(type)) {
-        const typeInformation = document.getElementById(type);
-        dict[type]++;
-        typeInformation.textContent = dict[type];
-      }
-    }
-
+    }}}
 
     function generateItemDropdown(listItem, data) {
         const items = data;
@@ -220,15 +212,24 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         let typeName = "Type(s): ";
         for (let i = 0; i < types.length; i++) {
           typeName += types[i].type.name + " ";
-          generatePokemonTableTypes(types[i].type.name);
         }
         const typeTextfeld = document.createElement("p");
         typeTextfeld.value = typeName;
         typeTextfeld.textContent = typeName;
         listItem.appendChild(typeTextfeld);
 
-
         return data;
+    }
+
+    function generatePokemonTableTypes(type) {
+      if(dick.hasOwnProperty(type)) {
+        const teamInformation = document.getElementById(type);
+        dick[type]++;
+        const typeTextfeld = document.createElement("p");
+        typeTextfeld.value = typeName;
+        typeTextfeld.textContent = typeName;
+        listItem.appendChild(typeTextfeld);
+      }
     }
 
     // Add event listener to the "Add to Team" button
@@ -239,10 +240,14 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         size_team++;
         const listItem = document.createElement("li");
         listItem.textContent = selectedPokemon;
+
+
+
+
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
 
-        generateTeamImages(selectedPokemon);
+        generateTeamImages();
       }
     });
   })
