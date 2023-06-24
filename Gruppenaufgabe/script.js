@@ -27,10 +27,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       pokemonDropdown.appendChild(option);
     });
 
-    function generateTeamImages() {
-      teamInformation.innerHTML = '';
-      for (let i = 0; i < size_team; i++) {
-        const pokemonName = pokemonTeam[i];
+    function generateTeamImages(pokemonName) {
+     // teamInformation.innerHTML = '';
+    //  for (let i = 0; i < size_team; i++) {
+       // const pokemonName = pokemonTeam[i];
         if (pokemonName) {
           const listItem = document.createElement("li");
           listItem.textContent = pokemonName;
@@ -48,16 +48,15 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then(data => generateAbilitiesDropdown(listItem, data))
             .then(data => generateMovesDropdown(listItem, data))
             .then(data => generatePokemonStats(listItem, data))
-            .then(data => generateDeleteButton(listItem, data));
-          
-          fetch('https://pokeapi.co/api/v2/item/?limit=2050')
+            .then(data => generateDeleteButton(listItem, data))
+            .then(() => fetch('https://pokeapi.co/api/v2/item/?limit=2050'))
             .then(response => response.json())
             .then(items => {
-
               console.log(items);
               generateItemDropdown(listItem, items); 
             })
-    }}}
+            console.log(size_team)
+    }}//}
 
     function generateItemDropdown(listItem, data) {
         const items = data;
@@ -235,7 +234,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
 
-        generateTeamImages();
+        generateTeamImages(selectedPokemon);
       }
     });
   })
