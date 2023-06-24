@@ -4,7 +4,7 @@ let size_team = 0;
 const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, undefined];
 
 // Fetch Pokémon data from the PokeAPI
-fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
   .then(response => response.json())
   .then(data => {
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
@@ -30,6 +30,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     function generateTeamImages() {
       teamInformation.innerHTML = '';
 
+
       for (let i = 0; i < size_team; i++) {
         const pokemonName = pokemonTeam[i];
         if (pokemonName) {
@@ -50,10 +51,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
             .then(data => generateMovesDropdown(listItem, data))
             .then(data => generatePokemonStats(listItem, data));
           
-          fetch(`https://pokeapi.co/api/v2/item/`)
+          fetch('https://pokeapi.co/api/v2/item/?limit=2050')
             .then(response => response.json())
             .then(items => {
-              //console.log("item");
+
               console.log(items);
               generateItemDropdown(listItem, items); 
             })
@@ -61,8 +62,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
     function generateItemDropdown(listItem, data) {
         const items = data;
-        console.log("MabMap")
-        console.log(items);
 
         const dropdown = document.createElement("select");
 
@@ -73,29 +72,20 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         defaultOption.textContent = "Select an Item" ;
         dropdown.appendChild(defaultOption);
         
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 2050; i++) {
           
           const option = document.createElement("option");
-          option.value = items.names[4].name;
-          console.log("MiupMiup");
-          console.log(items.names[4].name);
-          option.textContent = items.names[4].name;
-          dropdown.appendChild(option);
-
+          option.value = items.results[i].name;
+          option.textContent = items.results[i].name;
+          dropdown.appendChild(option)
         }
-        //pokemonAbilitiesContainer.appendChild(dropdown);
-        console.log(dropdown);
         listItem.appendChild(dropdown);
-        //return dropdown;
-
-        return data;
+        return items;
     }
 
 
     function generatePokemonImage(pokemonName, listItem, data) {
-      // Retrieve the Pokémon details including the image URL  
-            //console.log(data);
-            //console.log(pokemonData);
+
             const pokemonImage = data.sprites.front_default;
             if (pokemonImage) {
               const imageElement = document.createElement("img");
@@ -109,10 +99,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
     function generateAbilitiesDropdown(listItem, data) {
       // kreiert die abilities dropdown
-      //console.log("abilities");
-        //console.log(data);
+
         const abilities = data.abilities;
-        //console.log(abilities);
 
         const dropdown = document.createElement("select");
         dropdown.classList.add("pokemon-abilities-dropdown");
@@ -125,15 +113,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         for (let i = 0; i < abilities.length; i++) {
           const option = document.createElement("option");
           option.value = abilities[i].ability.name;
-          //console.log(abilities.length);
           option.textContent = abilities[i].ability.name;
           dropdown.appendChild(option);
         }
-        //pokemonAbilitiesContainer.appendChild(dropdown);
-        //console.log(dropdown);
         listItem.appendChild(dropdown);
-        //return dropdown;
-
         return data;
     }
 
@@ -163,7 +146,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
     function generatePokemonStats(listItem, data) {
         const stats = data.stats;
-        //console.log(stats);
         
         for (let i = 0; i < stats.length; i++) {
           const pElement = document.createElement("p");
@@ -208,7 +190,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     function generatePokemonTypes(listItem, data) {
         
         const types = data.types;
-        //console.log(types);
 
         let typeName = "Type(s): ";
         for (let i = 0; i < types.length; i++) {
@@ -216,7 +197,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         }
         const typeTextfeld = document.createElement("p");
         typeTextfeld.value = typeName;
-        //console.log(abilities.length);
         typeTextfeld.textContent = typeName;
         listItem.appendChild(typeTextfeld);
 
@@ -238,15 +218,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
-        //console.log(pokemonTeam);
+
         generateTeamImages();
-
-        //generateAbilitiesDropdown(selectedPokemon, listItem);
-        //console.log(abilitiesDropdown);
-        //listItem.appendChild(abilitiesDropdown);
-
-
-        //generateAbilitiesDropdown(selectedPokemon);
 
         // Hinzufügen eines Knopfes zum Löschen des Pokemons
         let removeFromTeam = document.createElement("button");
@@ -257,20 +230,16 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
           // delete pokemon from array
           const listItem = this.parentNode;
           const pokemonName = listItem.textContent.replace("Delete Pokémon", "");
-          //console.log(pokemonTeam + " " + pokemonName)
           const pokemonIndex = pokemonTeam.findIndex(
             name => name.toLowerCase() === pokemonName.toLowerCase()
           );
-          //console.log(pokemonIndex);
           if (pokemonIndex !== -1) {
             pokemonTeam[pokemonIndex] = "";
             for (let i = pokemonIndex; i < pokemonTeam.length; i++) {
               pokemonTeam[i] = pokemonTeam[i + 1];
             }
-            //console.log(pokemonTeam);
           }
-          
-          //console.log('Mupmiep');
+        
           size_team--;
           teamList.removeChild(listItem);
           console.log('Miepmiep');
@@ -282,5 +251,3 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
   .catch(error => {
     console.log("Error fetching Pokémon data:", error);
   });
-
-  
