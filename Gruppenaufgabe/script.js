@@ -29,8 +29,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
     function generateTeamImages() {
       teamInformation.innerHTML = '';
-
-
       for (let i = 0; i < size_team; i++) {
         const pokemonName = pokemonTeam[i];
         if (pokemonName) {
@@ -49,7 +47,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             })
             .then(data => generateAbilitiesDropdown(listItem, data))
             .then(data => generateMovesDropdown(listItem, data))
-            .then(data => generatePokemonStats(listItem, data));
+            .then(data => generatePokemonStats(listItem, data))
+            .then(data => generateDeleteButton(listItem, data));
           
           fetch('https://pokeapi.co/api/v2/item/?limit=2050')
             .then(response => response.json())
@@ -187,6 +186,24 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         return data;
     }
 
+    function generateDeleteButton(listItem, data) {
+       // Hinzufügen eines Knopfes zum Löschen des Pokemons
+       let removeFromTeam = document.createElement("button");
+       removeFromTeam.innerHTML = "Delete Pokémon";
+       listItem.appendChild(removeFromTeam);
+       removeFromTeam.addEventListener ("click", function() {
+
+         // delete pokemon from array
+         const listItem = this.parentNode;
+          const pokemonName = listItem.textContent.replace("Delete Pokémon", "");
+
+         size_team--;
+         console.log(listItem)
+         listItem.remove();
+       });
+       return data;
+    }
+
     function generatePokemonTypes(listItem, data) {
         
         const types = data.types;
@@ -214,37 +231,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
 
 
-        teamList.appendChild(listItem);
 
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
 
         generateTeamImages();
-
-        // Hinzufügen eines Knopfes zum Löschen des Pokemons
-        let removeFromTeam = document.createElement("button");
-        removeFromTeam.innerHTML = "Delete Pokémon";
-        listItem.appendChild(removeFromTeam);
-        removeFromTeam.addEventListener ("click", function() {
-
-          // delete pokemon from array
-          const listItem = this.parentNode;
-          const pokemonName = listItem.textContent.replace("Delete Pokémon", "");
-          const pokemonIndex = pokemonTeam.findIndex(
-            name => name.toLowerCase() === pokemonName.toLowerCase()
-          );
-          if (pokemonIndex !== -1) {
-            pokemonTeam[pokemonIndex] = "";
-            for (let i = pokemonIndex; i < pokemonTeam.length; i++) {
-              pokemonTeam[i] = pokemonTeam[i + 1];
-            }
-          }
-        
-          size_team--;
-          teamList.removeChild(listItem);
-          console.log('Miepmiep');
-          generateTeamImages();
-        });
       }
     });
   })
