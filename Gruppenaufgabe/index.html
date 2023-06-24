@@ -12,7 +12,8 @@
   </header>
   <main>
     <div id="container">
-    <section id="pokemon-selection">
+      <div id="container-header">
+      <section id="pokemon-selection">
       <h2>Select Pokémon:</h2>
       <ul id="pokemon-list">
       </ul>
@@ -21,7 +22,56 @@
         </select>
         <button id="add-to-team">Add to Team</button>
     </section>
-  
+
+    <section id="type-coverage">
+      <h2>Type Coverage</h2> 
+      <div id="type-details">
+        <table class="pokemon-table">
+          <tr>
+            <th><div class="type-cell" style="background: #a8a899;"><img alt="Typ-Icon Normal" src="images/types/normal.png"/></div></th>
+            <th><div class="type-cell" style="background: #a84c3d;"><img alt="Typ-Icon Kampf" src="images/types/kampf.png"/></div></th>
+            <th><div class="type-cell" style="background: #87b5e5;"><img alt="Typ-Icon Flug" src="images/types/flug.png"/></div></th>
+            <th><div class="type-cell" style="background: #864ab8;"><img alt="Typ-Icon Gift" src="images/types/gift.png"/></div></th>
+            <th><div class="type-cell" style="background: #956833;"><img alt="Typ-Icon Boden" src="images/types/boden.png"/></div></th>
+            <th><div class="type-cell" style="background: #a8995b;"><img alt="Typ-Icon Gestein" src="images/types/gestein.png"/></div></th>
+            <th><div class="type-cell" style="background: #83ad25;"><img alt="Typ-Icon Kaefer" src="images/types/kaefer.png"/></div></th>
+            <th><div class="type-cell" style="background: #633c64;"><img alt="Typ-Icon Geist" src="images/types/geist.png"/></div></th>
+            <th><div class="type-cell" style="background: #9999a8;"><img alt="Typ-Icon Stahl" src="images/types/stahl.png"/></div></th>
+            <th><div class="type-cell" style="background: #e53b19;"><img alt="Typ-Icon Feuer" src="images/types/feuer.png"/></div></th>
+            <th><div class="type-cell" style="background: #278bcc;"><img alt="Typ-Icon Wasser" src="images/types/wasser.png"/></div></th>
+            <th><div class="type-cell" style="background: #58a951;"><img alt="Typ-Icon Pflanze" src="images/types/pflanze.png"/></div></th>
+            <th><div class="type-cell" style="background: #e5c600;"><img alt="Typ-Icon Elektro" src="images/types/elektro.png"/></div></th>
+            <th><div class="type-cell" style="background: #e55973;"><img alt="Typ-Icon Psycho" src="images/types/psycho.png"/></div></th>
+            <th><div class="type-cell" style="background: #68baac;"><img alt="Typ-Icon Eis" src="images/types/eis.png"/></div></th>
+            <th><div class="type-cell" style="background: #4d64ab;"><img alt="Typ-Icon Drache" src="images/types/drache.png"/></div></th>
+            <th><div class="type-cell" style="background: #463e3e;"><img alt="Typ-Icon Unlicht" src="images/types/unlicht.png"/></div></th>
+            <th><div class="type-cell" style="background: #d480cf;"><img alt="Typ-Icon Fee" src="images/types/fee.png"/></div></th>
+          </tr>
+          <tr>
+            <td id="normal">0</td>
+            <td id="fighting">0</td>
+            <td id="flying">0</td>
+            <td id="poison">0</td>
+            <td id="ground">0</td>
+            <td id="rock">0</td>
+            <td id="bug">0</td>
+            <td id="ghost">0</td>
+            <td id="steel">0</td>
+            <td id="fire">0</td>
+            <td id="water">0</td>
+            <td id="grass">0</td>
+            <td id="electric">0</td>
+            <td id="psychic">0</td>
+            <td id="ice">0</td>
+            <td id="dragon">0</td>
+            <td id="dark">0</td>
+            <td id="fairy">0</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </div>
+
     <section id="team-info">
       <h2>Team Information:</h2> 
       <div id="team-details">
@@ -29,29 +79,7 @@
         </ul>
       </div>
     </section>
-    <section id="type-coverage">
-      <h2>Type Coverage</h2> 
-      <div id="type-details">
-        <div style="background: #a8a899;"><a href="/Normal" title="Normal"><img alt="Typ-Icon Normal (Symbol) PLA.png" src="/images/thumb/8/85/Typ-Icon_Normal_%28Symbol%29_PLA.png/32px-Typ-Icon_Normal_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/8/85/Typ-Icon_Normal_%28Symbol%29_PLA.png/48px-Typ-Icon_Normal_%28Symbol%29_PLA.png 1.5x, /images/8/85/Typ-Icon_Normal_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #a84c3d;"><a href="/Kampf" title="Kampf"><img alt="Typ-Icon Kampf (Symbol) PLA.png" src="/images/thumb/3/3c/Typ-Icon_Kampf_%28Symbol%29_PLA.png/32px-Typ-Icon_Kampf_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/3/3c/Typ-Icon_Kampf_%28Symbol%29_PLA.png/48px-Typ-Icon_Kampf_%28Symbol%29_PLA.png 1.5x, /images/3/3c/Typ-Icon_Kampf_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #87b5e5;"><a href="/Flug" title="Flug"><img alt="Typ-Icon Flug (Symbol) PLA.png" src="/images/thumb/0/00/Typ-Icon_Flug_%28Symbol%29_PLA.png/32px-Typ-Icon_Flug_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/0/00/Typ-Icon_Flug_%28Symbol%29_PLA.png/48px-Typ-Icon_Flug_%28Symbol%29_PLA.png 1.5x, /images/0/00/Typ-Icon_Flug_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #864ab8;"><a href="/Gift" title="Gift"><img alt="Typ-Icon Gift (Symbol) PLA.png" src="/images/thumb/b/b5/Typ-Icon_Gift_%28Symbol%29_PLA.png/32px-Typ-Icon_Gift_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/b/b5/Typ-Icon_Gift_%28Symbol%29_PLA.png/48px-Typ-Icon_Gift_%28Symbol%29_PLA.png 1.5x, /images/b/b5/Typ-Icon_Gift_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #956833;"><a href="/Boden" title="Boden"><img alt="Typ-Icon Boden (Symbol) PLA.png" src="/images/thumb/c/cc/Typ-Icon_Boden_%28Symbol%29_PLA.png/32px-Typ-Icon_Boden_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/c/cc/Typ-Icon_Boden_%28Symbol%29_PLA.png/48px-Typ-Icon_Boden_%28Symbol%29_PLA.png 1.5x, /images/c/cc/Typ-Icon_Boden_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #a8995b;"><a href="/Gestein" title="Gestein"><img alt="Typ-Icon Gestein (Symbol) PLA.png" src="/images/thumb/0/0a/Typ-Icon_Gestein_%28Symbol%29_PLA.png/32px-Typ-Icon_Gestein_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/0/0a/Typ-Icon_Gestein_%28Symbol%29_PLA.png/48px-Typ-Icon_Gestein_%28Symbol%29_PLA.png 1.5x, /images/0/0a/Typ-Icon_Gestein_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #83ad25;"><a href="/K%C3%A4fer" title="Käfer"><img alt="Typ-Icon Käfer (Symbol) PLA.png" src="/images/thumb/f/fd/Typ-Icon_K%C3%A4fer_%28Symbol%29_PLA.png/32px-Typ-Icon_K%C3%A4fer_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/f/fd/Typ-Icon_K%C3%A4fer_%28Symbol%29_PLA.png/48px-Typ-Icon_K%C3%A4fer_%28Symbol%29_PLA.png 1.5x, /images/f/fd/Typ-Icon_K%C3%A4fer_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #633c64;"><a href="/Geist" title="Geist"><img alt="Typ-Icon Geist (Symbol) PLA.png" src="/images/thumb/c/c0/Typ-Icon_Geist_%28Symbol%29_PLA.png/32px-Typ-Icon_Geist_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/c/c0/Typ-Icon_Geist_%28Symbol%29_PLA.png/48px-Typ-Icon_Geist_%28Symbol%29_PLA.png 1.5x, /images/c/c0/Typ-Icon_Geist_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #9999a8;"><a href="/Stahl" title="Stahl"><img alt="Typ-Icon Stahl (Symbol) PLA.png" src="/images/thumb/2/2b/Typ-Icon_Stahl_%28Symbol%29_PLA.png/32px-Typ-Icon_Stahl_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/2/2b/Typ-Icon_Stahl_%28Symbol%29_PLA.png/48px-Typ-Icon_Stahl_%28Symbol%29_PLA.png 1.5x, /images/2/2b/Typ-Icon_Stahl_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #e53b19;"><a href="/Feuer" title="Feuer"><img alt="Typ-Icon Feuer (Symbol) PLA.png" src="/images/thumb/f/f0/Typ-Icon_Feuer_%28Symbol%29_PLA.png/32px-Typ-Icon_Feuer_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/f/f0/Typ-Icon_Feuer_%28Symbol%29_PLA.png/48px-Typ-Icon_Feuer_%28Symbol%29_PLA.png 1.5x, /images/f/f0/Typ-Icon_Feuer_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #278bcc;"><a href="/Wasser" title="Wasser"><img alt="Typ-Icon Wasser (Symbol) PLA.png" src="/images/thumb/b/b6/Typ-Icon_Wasser_%28Symbol%29_PLA.png/32px-Typ-Icon_Wasser_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/b/b6/Typ-Icon_Wasser_%28Symbol%29_PLA.png/48px-Typ-Icon_Wasser_%28Symbol%29_PLA.png 1.5x, /images/b/b6/Typ-Icon_Wasser_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #58a951;"><a href="/Pflanze" title="Pflanze"><img alt="Typ-Icon Pflanze (Symbol) PLA.png" src="/images/thumb/8/82/Typ-Icon_Pflanze_%28Symbol%29_PLA.png/32px-Typ-Icon_Pflanze_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/8/82/Typ-Icon_Pflanze_%28Symbol%29_PLA.png/48px-Typ-Icon_Pflanze_%28Symbol%29_PLA.png 1.5x, /images/8/82/Typ-Icon_Pflanze_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #e5c600;"><a href="/Elektro" title="Elektro"><img alt="Typ-Icon Elektro (Symbol) PLA.png" src="/images/thumb/a/a9/Typ-Icon_Elektro_%28Symbol%29_PLA.png/32px-Typ-Icon_Elektro_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/a/a9/Typ-Icon_Elektro_%28Symbol%29_PLA.png/48px-Typ-Icon_Elektro_%28Symbol%29_PLA.png 1.5x, /images/a/a9/Typ-Icon_Elektro_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #e55973;"><a href="/Psycho" title="Psycho"><img alt="Typ-Icon Psycho (Symbol) PLA.png" src="/images/thumb/1/12/Typ-Icon_Psycho_%28Symbol%29_PLA.png/32px-Typ-Icon_Psycho_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/1/12/Typ-Icon_Psycho_%28Symbol%29_PLA.png/48px-Typ-Icon_Psycho_%28Symbol%29_PLA.png 1.5x, /images/1/12/Typ-Icon_Psycho_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #68baac;"><a href="/Eis" title="Eis"><img alt="Typ-Icon Eis (Symbol) PLA.png" src="/images/thumb/d/d8/Typ-Icon_Eis_%28Symbol%29_PLA.png/32px-Typ-Icon_Eis_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/d/d8/Typ-Icon_Eis_%28Symbol%29_PLA.png/48px-Typ-Icon_Eis_%28Symbol%29_PLA.png 1.5x, /images/d/d8/Typ-Icon_Eis_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #4d64ab;"><a href="/Drache" title="Drache"><img alt="Typ-Icon Drache (Symbol) PLA.png" src="/images/thumb/6/6f/Typ-Icon_Drache_%28Symbol%29_PLA.png/32px-Typ-Icon_Drache_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/6/6f/Typ-Icon_Drache_%28Symbol%29_PLA.png/48px-Typ-Icon_Drache_%28Symbol%29_PLA.png 1.5x, /images/6/6f/Typ-Icon_Drache_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #463e3e;"><a href="/Unlicht" title="Unlicht"><img alt="Typ-Icon Unlicht (Symbol) PLA.png" src="/images/thumb/5/58/Typ-Icon_Unlicht_%28Symbol%29_PLA.png/32px-Typ-Icon_Unlicht_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/5/58/Typ-Icon_Unlicht_%28Symbol%29_PLA.png/48px-Typ-Icon_Unlicht_%28Symbol%29_PLA.png 1.5x, /images/5/58/Typ-Icon_Unlicht_%28Symbol%29_PLA.png 2x" /></a></div>
-<div style="background: #d480cf;"><a href="/Fee" title="Fee"><img alt="Typ-Icon Fee (Symbol) PLA.png" src="/images/thumb/6/6c/Typ-Icon_Fee_%28Symbol%29_PLA.png/32px-Typ-Icon_Fee_%28Symbol%29_PLA.png" decoding="async" loading="lazy" width="32" height="32" srcset="/images/thumb/6/6c/Typ-Icon_Fee_%28Symbol%29_PLA.png/48px-Typ-Icon_Fee_%28Symbol%29_PLA.png 1.5x, /images/6/6c/Typ-Icon_Fee_%28Symbol%29_PLA.png 2x" /></a></div>
-      </div>
-    </section>
+
   </div>
   </main>
   
