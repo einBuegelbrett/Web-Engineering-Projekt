@@ -12,7 +12,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
     const addToTeamBtn = document.getElementById("add-to-team");
     const teamList = document.getElementById("team-list");
-    const teamInformation = document.getElementById("single-pokemons");
+    //const teamInformation = document.getElementById("single-pokemons");
     const pokemonAbilitiesContainer = document.getElementById("pokemon-abilities-container");
 
         // Store the Pokémon details for image retrieval
@@ -30,7 +30,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     });
 
     function generatePokemon(pokemon) {
-      teamInformation.innerHTML = '';
+      //teamInformation.innerHTML = '';
         const pokemonName = pokemon;
         console.log(pokemon.name);
         if (pokemonName) {
@@ -46,9 +46,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
               break;
             }
           } 
-
-          const test = document.getElementById("team-details");
-          console.log(test);
 
           console.log(listItem);
           listItem.textContent = pokemonName;
