@@ -43,7 +43,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           {
             string = "pokemon-" + i;
             listItem = document.getElementById(string);
-            if(listItem.innerHTML == '<img alt="pokeball-icon" src="images/placeholder/pokeball.png" width="250em">'){
+            if(listItem.innerHTML == '<img alt="pokeball-icon" src="images/placeholder/pokeball.png">'){
               break;
             }
           } 
@@ -218,7 +218,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
          console.log(listItem)
          //listItem.remove();
          deletePokemonTypes(data);
-         listItem.innerHTML = '<img alt="pokeball-icon" src="images/placeholder/pokeball.png" width="250em"></img>';
+         listItem.innerHTML = '<img alt="pokeball-icon" src="images/placeholder/pokeball.png">';
        });
        return data;
     }
