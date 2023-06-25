@@ -31,14 +31,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
     function generatePokemon(pokemon) {
       teamInformation.innerHTML = '';
-      //for (let i = 0; i < size_team; i++) {
         const pokemonName = pokemon;
         console.log(pokemon.name);
         if (pokemonName) {
-          //const listItem = document.createElement("li");
-          //listItem.textContent = pokemonName;
-          
-          //console.log(string);
 
           let listItem;
           let string
@@ -50,8 +45,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             if(listItem.innerHTML.trim() == ""){
               break;
             }
-          }
-          
+          } 
 
           const test = document.getElementById("team-details");
           console.log(test);
@@ -73,16 +67,14 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then(data => generateMovesDropdown(listItem, data))
             .then(data => generatePokemonStats(listItem, data))
             .then(data => generateDeleteButton(listItem, data))
-            .then();
-          
-          fetch('https://pokeapi.co/api/v2/item/?limit=2050')
+            .then(() => fetch('https://pokeapi.co/api/v2/item/?limit=2050'))
             .then(response => response.json())
             .then(items => {
 
               console.log(items);
               generateItemDropdown(listItem, items); 
-            })
-    }}//}
+            });        
+    }}
 
     function generateItemDropdown(listItem, data) {
         const items = data;
@@ -224,6 +216,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
          size_team--;
          console.log(listItem)
          //listItem.remove();
+         deletePokemonTypes(data);
          listItem.innerHTML = '';
        });
        return data;
@@ -245,14 +238,24 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         return data;
     }
 
+  function deletePokemonTypes(data) {
+    const types = data.types;
+    for (let i = 0; i < types.length; i++) {
+      type = types[i].type.name;
+      if(dict.hasOwnProperty(type)) {
+        const typeInformation = document.getElementById(type);
+        dict[type]--;
+        typeInformation.textContent = dict[type];
+      }
+    }
+  }
+
     function generatePokemonTableTypes(type) {
       if(dict.hasOwnProperty(type)) {
         const typeInformation = document.getElementById(type);
         dict[type]++;
         typeInformation.textContent = dict[type];
       }
-
-      return 
     }
 
     // Add event listener to the "Add to Team" button
