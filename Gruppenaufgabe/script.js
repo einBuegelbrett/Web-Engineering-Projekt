@@ -30,7 +30,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     });
 
     function generatePokemon(pokemon) {
-      //teamInformation.innerHTML = '';
         const pokemonName = pokemon;
         console.log(pokemon.name);
         if (pokemonName) {
@@ -38,11 +37,13 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           let listItem;
           let string
 
+  
+
           for(i = 1; i < 7; i++)
           {
             string = "pokemon-" + i;
             listItem = document.getElementById(string);
-            if(listItem.innerHTML.trim() == ""){
+            if(listItem.innerHTML == '<img alt="pokeball-icon" src="images/placeholder/pokeball.png" width="250em">'){
               break;
             }
           } 
@@ -152,6 +153,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           }
           listItem.appendChild(dropdown);
       }
+      console.log("Skip")
+      console.log(pokemonMoves)
+      
 
       return data;
       }
@@ -214,7 +218,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
          console.log(listItem)
          //listItem.remove();
          deletePokemonTypes(data);
-         listItem.innerHTML = '';
+         listItem.innerHTML = '<img alt="pokeball-icon" src="images/placeholder/pokeball.png" width="250em"></img>';
        });
        return data;
     }
