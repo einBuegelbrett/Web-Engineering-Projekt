@@ -2,6 +2,8 @@
 const max_pokemon_team = 6;
 let size_team = 0;
 const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, undefined];
+let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, "rock": 0, "bug": 0, "ghost": 0, "steel": 0, "fire": 0, "water": 0, "grass": 0, "electric": 0, "psychic": 0, "ice": 0, "dragon": 0, "dark": 0, "fairy": 0 };
+
 
 // Fetch Pokémon data from the PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
@@ -27,12 +29,34 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       pokemonDropdown.appendChild(option);
     });
 
-    function generateTeamImages() {
+    function generatePokemon(pokemon) {
       teamInformation.innerHTML = '';
-      for (let i = 0; i < size_team; i++) {
-        const pokemonName = pokemonTeam[i];
+      //for (let i = 0; i < size_team; i++) {
+        const pokemonName = pokemon;
+        console.log(pokemon.name);
         if (pokemonName) {
-          const listItem = document.createElement("li");
+          //const listItem = document.createElement("li");
+          //listItem.textContent = pokemonName;
+          
+          //console.log(string);
+
+          let listItem;
+          let string
+
+          for(i = 1; i < 7; i++)
+          {
+            string = "pokemon-" + i;
+            listItem = document.getElementById(string);
+            if(listItem.innerHTML.trim() == ""){
+              break;
+            }
+          }
+          
+
+          const test = document.getElementById("team-details");
+          console.log(test);
+
+          console.log(listItem);
           listItem.textContent = pokemonName;
           const pokemonURL = pokemonDetails[pokemonName];
           fetch(pokemonURL)
@@ -41,7 +65,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)) 
             .then(response => response.json())
             .then(data => {
-              teamInformation.appendChild(listItem) // Append the <li> element to the team list
+              //teamInformation.appendChild(listItem) // Append the <li> element to the team list
               generatePokemonTypes(listItem, data)
               return data;
             })
@@ -58,7 +82,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
               console.log(items);
               generateItemDropdown(listItem, items); 
             })
-    }}}
+    }}//}
 
     function generateItemDropdown(listItem, data) {
         const items = data;
@@ -82,7 +106,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         listItem.appendChild(dropdown);
         return items;
     }
-
 
     function generatePokemonImage(pokemonName, listItem, data) {
 
@@ -200,18 +223,19 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
          size_team--;
          console.log(listItem)
-         listItem.remove();
+         //listItem.remove();
+         listItem.innerHTML = '';
        });
        return data;
     }
 
     function generatePokemonTypes(listItem, data) {
-        
         const types = data.types;
 
         let typeName = "Type(s): ";
         for (let i = 0; i < types.length; i++) {
           typeName += types[i].type.name + " ";
+          generatePokemonTableTypes(types[i].type.name);
         }
         const typeTextfeld = document.createElement("p");
         typeTextfeld.value = typeName;
@@ -222,14 +246,13 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     }
 
     function generatePokemonTableTypes(type) {
-      if(dick.hasOwnProperty(type)) {
-        const teamInformation = document.getElementById(type);
-        dick[type]++;
-        const typeTextfeld = document.createElement("p");
-        typeTextfeld.value = typeName;
-        typeTextfeld.textContent = typeName;
-        listItem.appendChild(typeTextfeld);
+      if(dict.hasOwnProperty(type)) {
+        const typeInformation = document.getElementById(type);
+        dict[type]++;
+        typeInformation.textContent = dict[type];
       }
+
+      return 
     }
 
     // Add event listener to the "Add to Team" button
@@ -246,8 +269,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
-
-        generateTeamImages();
+        console.log(selectedPokemon);
+        generatePokemon(selectedPokemon);
       }
     });
   })
