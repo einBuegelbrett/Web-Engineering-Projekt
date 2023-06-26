@@ -26,4 +26,12 @@
     margin: 1em;
   }
 
+  #pokemon-selection, #type-coverage, #team-info {
+    background-color: antiquewhite;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin: 1em;
+    padding: 1em;
+  }
+
 /*Bigger Screen - Desktop*/
