@@ -3,6 +3,7 @@ const max_pokemon_team = 6;
 let size_team = 0;
 const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, undefined];
 let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, "rock": 0, "bug": 0, "ghost": 0, "steel": 0, "fire": 0, "water": 0, "grass": 0, "electric": 0, "psychic": 0, "ice": 0, "dragon": 0, "dark": 0, "fairy": 0 };
+const typeBackgroundColor = { "normal": "#a8a899", "fighting": "#a84c3d", "flying": "#87b5e5", "poison": "#864ab8", "ground": "#956833", "rock": "#a8995b", "bug": "#83ad25", "ghost": "#633c64", "steel": "#9999a8", "fire": "#e53b19", "water": "#278bcc", "grass": "#58a951", "electric": "#e5c600", "psychic": "#e55973", "ice": "#68baac", "dragon": "#4d64ab", "dark": "#463e3e", "fairy": "#d480cf"};
 
 
 // Fetch Pokémon data from the PokeAPI
@@ -277,7 +278,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       else {
         const thZelleBild = document.createElement("th");
         const thZelleZahl = document.createElement("th");
-        thZelleBild.innerHTML = `<div style="background: #a8a899;"><img alt="Typ-Icon ${type}" src="images/types/${type}.png"/></div>`;
+        thZelleBild.innerHTML = `<div style="background: ${typeBackgroundColor[type]};""><img alt="Typ-Icon ${type}" src="images/types/${type}.png"/></div>`;
         dict[type]++;
         thZelleZahl.innerHTML = dict[type];
         thZelleBild.classList.add(type);
