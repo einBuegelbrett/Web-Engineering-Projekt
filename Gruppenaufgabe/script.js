@@ -244,17 +244,49 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       if(dict.hasOwnProperty(type)) {
         const typeInformation = document.getElementById(type);
         dict[type]--;
-        typeInformation.textContent = dict[type];
+        if(dict[type] == 0) {
+          console.log("BUUUUUUP");
+          
+          const typTable = document.getElementById("type-table");
+          console.log(typTable.classList.remove(type));
+          const typeElements = typTable.getElementsByClassName(type);
+
+          while (typeElements.length > 0) {
+            typeElements[0].parentNode.removeChild(typeElements[0]);
+          }
+        }
+        else {
+          typeInformation.textContent = dict[type];
+        }
       }
     }
   }
 
     function generatePokemonTableTypes(type) {
-      if(dict.hasOwnProperty(type)) {
-        const typeInformation = document.getElementById(type);
-        dict[type]++;
-        typeInformation.textContent = dict[type];
+      const trTableImage = document.getElementById("tr-type-table-images");
+      const trTableNumber = document.getElementById("tr-type-table-numbers");
+      console.log(`image-${type}`);
+      console.log(document.getElementById(`image-${type}`));
+      if(document.getElementById(type)) {
+        if(dict.hasOwnProperty(type)) {
+          const typeInformation = document.getElementById(type);
+          dict[type]++;
+          typeInformation.textContent = dict[type];
+        }
       }
+      else {
+        const thZelleBild = document.createElement("th");
+        const thZelleZahl = document.createElement("th");
+        thZelleBild.innerHTML = `<div style="background: #a8a899;"><img alt="Typ-Icon ${type}" src="images/types/${type}.png"/></div>`;
+        dict[type]++;
+        thZelleZahl.innerHTML = dict[type];
+        thZelleBild.classList.add(type);
+        thZelleZahl.classList.add(type);
+        thZelleZahl.setAttribute("id", type);
+        trTableImage.appendChild(thZelleBild);
+        trTableNumber.appendChild(thZelleZahl);
+      }
+
     }
 
     // Add event listener to the "Add to Team" button
@@ -265,9 +297,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         size_team++;
         const listItem = document.createElement("li");
         listItem.textContent = selectedPokemon;
-
-
-
 
         // add pokemon to array
         pokemonTeam[size_team-1] = selectedPokemon;
