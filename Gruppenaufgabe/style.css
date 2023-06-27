@@ -33,11 +33,17 @@
   }
 
   #pokemon-selection, #type-coverage, #team-info {
-    background-color: antiquewhite;
+    background-color: rgb(240, 238, 236);
     border-radius: 20px;
     border: 1px solid black;
     margin: 1em;
     padding: 1em;
+    padding-top: 0em;
+  }
+
+  #pokemon-table img {
+    width: 2em;
+    height: 2em
   }
 
 /*Bigger Screen - Desktop*/

@@ -37,8 +37,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           let listItem;
           let string
 
-  
-
           for(i = 1; i < 7; i++)
           {
             string = "pokemon-" + i;
