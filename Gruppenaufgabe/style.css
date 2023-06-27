@@ -8,22 +8,28 @@
     border: 1px solid black;
   }
 
-  header h1 {
-    color: #ffcb05;
-    text-shadow:0 0 1px black;
-    font-size: 1em;
-    padding-top: 0.1em;
-  }
-
   #images-header {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
-
+  
   #images-header img {
     width: 5em;
     height: 5em;
-    margin: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  #images-header #logo {
+    width: 10em;
+  }
+
+  #text-header {
+    color: #ffcb05;
+    text-shadow:0 0 1px black;
+    font-size: 1.5em;
+    text-align: center;
   }
 
   #pokemon-selection, #type-coverage, #team-info {
@@ -35,3 +41,7 @@
   }
 
 /*Bigger Screen - Desktop*/
+
+@media (min-width: 1280px) {
+
+}
