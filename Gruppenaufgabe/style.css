@@ -33,8 +33,9 @@
   }
 
   #pokemon-selection, #type-coverage, #team-info {
-    background-color:#2a75bb;
+    background-color:#3790e4;
     color: #ffcb05;
+    text-shadow:0 0 1px black;
     border-radius: 20px;
     border: 1px solid black;
     margin: 1em;
@@ -45,6 +46,19 @@
   #pokemon-table img {
     width: 2em;
     height: 2em
+  }
+
+  .pokemon-type-cell {
+    border: 1px solid #ffcb05;
+    padding: 1.8em;
+  }
+
+  .pokemon-type-cell p {
+    font-size: small;
+  }
+
+  .pokemon-type-cell select {
+    width: 2em; 
   }
 
 /*Bigger Screen - Desktop*/
