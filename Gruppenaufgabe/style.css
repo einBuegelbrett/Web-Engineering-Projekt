@@ -1,5 +1,9 @@
   /*Smaller Screen - Mobile*/
 
+  body {
+    background-color:;
+  }
+
   header {
     background-color: #2a75bb;
     padding: 10px;
@@ -70,7 +74,22 @@
   }
 
   .pokemon-type-cell select {
-    width: 2em; 
+    width: 8em; 
+  }
+
+  .pokemon-type-cell button {
+    width: 5em; 
+    height: 2em;
+    
+  }
+
+  .pokemon-abilities-dropdown {
+    margin-bottom: 1em;
+  }
+
+  .pokemon-moves-dropdown {
+    display: flex;
+    flex-direction: column;
   }
 
 /*Bigger Screen - Desktop*/

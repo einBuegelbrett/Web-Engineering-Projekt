@@ -119,7 +119,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
   
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
-        defaultOption.textContent = "Select an ability" ;
+        defaultOption.textContent = "Select ability" ;
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < abilities.length; i++) {
@@ -141,7 +141,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           dropdown.classList.add("pokemon-moves-dropdown");
           const defaultOption = document.createElement("option");
           defaultOption.value = "";
-          defaultOption.textContent = "Select a move" ;
+          defaultOption.textContent = "Select move" ;
           dropdown.appendChild(defaultOption);
           
           for (let j = 0; j < pokemonMoves.length; j++) {
