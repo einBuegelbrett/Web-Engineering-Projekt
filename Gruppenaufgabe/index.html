@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokémon Team Builder</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body> 
   <header>
+    <div class="container">
   <div id="images-header">
   <img src="images/title-images/evoli.png">
     <img id="logo" src="images/title-images/pokemon_logo.png">
@@ -16,7 +18,7 @@
 <p id="text-header">Pokébuilder</p>
 </header>
   <main>
-    <div id="container">
+    <div id="container-main">
       <section id="pokemon-selection">
         <h2>Select Pokémon:</h2>
         <ul id="pokemon-list">
@@ -45,19 +47,23 @@
       <div id="team-details">
       <table id="pokemon-table">
         <tr>
-          <td class="pokemon-type-cell" id="pokemon-1"><img alt="pokeball-icon" src="images/placeholder/pokeball.png"></td>
-          <td class ="pokemon-type-cell" id="pokemon-2"><img alt="pokeball-icon" src="images/placeholder/pokeball.png"></td>
-          <td class ="pokemon-type-cell" id="pokemon-3"><img alt="pokeball-icon" src="images/placeholder/pokeball.png"></td>
-          <td class ="pokemon-type-cell" id="pokemon-4"><img alt="pokeball-icon" src="images/placeholder/pokeball.png" ></td>
-          <td class ="pokemon-type-cell" id="pokemon-5"><img alt="pokeball-icon" src="images/placeholder/pokeball.png" ></td>
-          <td class ="pokemon-type-cell" id="pokemon-6"><img alt="pokeball-icon" src="images/placeholder/pokeball.png" ></td>
+          <td class="pokemon-type-cell" id="pokemon-1"><img alt="pokeball-icon" src="images/placeholder/pokeball.png">
         </tr>
         <tr>
-
+          <td class ="pokemon-type-cell" id="pokemon-2"><img alt="pokeball-icon" src="images/placeholder/pokeball.png">
         </tr>
         <tr>
-
+          <td class ="pokemon-type-cell" id="pokemon-3"><img alt="pokeball-icon" src="images/placeholder/pokeball.png">
         </tr>
+        <tr>
+          <td class ="pokemon-type-cell" id="pokemon-4"><img alt="pokeball-icon" src="images/placeholder/pokeball.png" >
+        </tr>
+          <tr>
+            <td class ="pokemon-type-cell" id="pokemon-5"><img alt="pokeball-icon" src="images/placeholder/pokeball.png" >
+          </tr>
+          <tr>
+            <td class ="pokemon-type-cell" id="pokemon-6"><img alt="pokeball-icon" src="images/placeholder/pokeball.png" >
+          </tr>
       </table>
       </div>
     </section>
@@ -65,5 +71,6 @@
   </main>
   
   <script src="script.js"></script>
+</div>
 </body>
 </html>
