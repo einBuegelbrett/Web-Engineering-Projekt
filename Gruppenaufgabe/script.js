@@ -42,16 +42,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           {
             string = "pokemon-" + i;
             listItem = document.getElementById(string);
-            console.log("GUUUUU");
-            console.log(listItem.innerHTML == '<img alt="pokeball-icon" src="images/placeholder/pokeball.png">');
-            if(listItem.innerHTML == '<img alt="pokeball-icon" src="images/placeholder/pokeball.png">'){
+            if(listItem.innerHTML == '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">'){
               break;
             }
           } 
-
-          console.log(listItem);
-          listItem.textContent = pokemonName;
-          const pokemonURL = pokemonDetails[pokemonName];
+         listItem.textContent = '';
+        const pokemonURL = pokemonDetails[pokemonName];
           fetch(pokemonURL)
             .then(response => response.json())
             .then(data => generatePokemonImage(pokemonName, listItem, data))
@@ -64,14 +60,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             })
             .then(data => generateAbilitiesDropdown(listItem, data))
             .then(data => generateMovesDropdown(listItem, data))
-            //.then(data => generatePokemonStats(listItem, data))
             .then(data => generateDeleteButton(listItem, data))
             .then(() => fetch('https://pokeapi.co/api/v2/item/?limit=2050'))
             .then(response => response.json())
             .then(items => {
-
-              console.log(items);
-              generateItemDropdown(listItem, items); 
+              generateItemDropdown(listItem, items);
             });        
     }}
 
@@ -88,7 +81,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < 2050; i++) {
-          
           const option = document.createElement("option");
           option.value = items.results[i].name;
           option.textContent = items.results[i].name;
@@ -105,7 +97,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
               const imageElement = document.createElement("img");
               imageElement.src = pokemonImage;
               imageElement.alt = pokemonName;
+              imageElement.classList.add("pokemon-bilder");
               listItem.appendChild(imageElement);
+              const pokemonNameElementP = document.createElement("p");
+              pokemonNameElementP.textContent = pokemonName
+              listItem.appendChild(pokemonNameElementP);
             }
 
             return data;
@@ -223,7 +219,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
          console.log(listItem)
          //listItem.remove();
          deletePokemonTypes(data);
-         listItem.innerHTML = '<img alt="pokeball-icon" src="images/placeholder/pokeball.png">';
+         listItem.innerHTML = '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">';
        });
        return data;
     }
@@ -272,8 +268,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     function generatePokemonTableTypes(type) {
       const trTableImage = document.getElementById("tr-type-table-images");
       const trTableNumber = document.getElementById("tr-type-table-numbers");
-      console.log(`image-${type}`);
-      console.log(document.getElementById(`image-${type}`));
       if(document.getElementById(type)) {
         if(dict.hasOwnProperty(type)) {
           const typeInformation = document.getElementById(type);

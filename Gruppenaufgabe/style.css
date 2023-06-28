@@ -1,8 +1,5 @@
   /*Smaller Screen - Mobile*/
 
-  body {
-    background-color:;
-  }
 
   header {
     background-color: #2a75bb;
@@ -49,25 +46,22 @@
     padding-top: 0em;
   }
 
-  #pokemon-table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .pokemon-balls{
+    width: 6.5em;
+    height: 6.5em;
+    border: 1px solid black;
   }
 
-  #pokemon-table img {
-    width: 2em;
-    height: 2em;
-    overflow: auto;
-    width: auto;
+  .pokemon-bilder {
+    width: 8.69em;
+    height: 8.69em;
   }
 
   .pokemon-type-cell {
-    border: 1px solid #ffcb05;
-    overflow: auto;
-    width: auto;
-    position: center;
+    width: 50em;
+    border: 1px solid #ffcb05; /*Anfangssichtbarkeit geht wieder weg*/
   }
+
 
   .pokemon-type-cell p {
     font-size: small;
