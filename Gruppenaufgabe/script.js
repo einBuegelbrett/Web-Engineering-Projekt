@@ -40,8 +40,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
           for(i = 1; i < 7; i++)
           {
-            console.log("GUUUUU");
-            console.log(listItem.innerHTML == '<img alt="pokeball-icon" src="images/placeholder/pokeball.png">');
             string = "pokemon-" + i;
             listItem = document.getElementById(string);
             if(listItem.innerHTML == '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">'){
