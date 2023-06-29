@@ -93,6 +93,18 @@
     height: 2em;
   }
 
+  .FlexBoxImageAndNameAndTyps {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .FlexBoxNameAndTyps {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+    padding-top: 2em;
+  }
+
   .pokemon-abilities-dropdown {
     margin-bottom: 1em;
   }

@@ -8,6 +8,12 @@ const typeCoverageBackgroundColor = { "normal": "#a8a899", "fighting": "#a84c3d"
 let FlexBoxDeleteAndItemDropdown = document.createElement("div");
 FlexBoxDeleteAndItemDropdown.classList.add("DeleteAndItemDropdown");
 
+let FlexBoxImageAndNameAndTyps = document.createElement("div");
+FlexBoxImageAndNameAndTyps.classList.add("FlexBoxImageAndNameAndTyps");
+
+let FlexBoxNameAndTyps = document.createElement("div");
+FlexBoxNameAndTyps.classList.add("FlexBoxNameAndTyps");
+
 // Fetch Pokémon data from the PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
   .then(response => response.json())
@@ -102,10 +108,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
               imageElement.src = pokemonImage;
               imageElement.alt = pokemonName;
               imageElement.classList.add("pokemon-bilder");
-              listItem.appendChild(imageElement);
+              FlexBoxImageAndNameAndTyps.appendChild(imageElement);
               const pokemonNameElementP = document.createElement("p");
               pokemonNameElementP.textContent = pokemonName
-              listItem.appendChild(pokemonNameElementP);
+              FlexBoxNameAndTyps.appendChild(pokemonNameElementP);
             }
 
             return data;
@@ -261,10 +267,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           typeTextfeld.classList.add("pokemon-type");
           
           //typeName += types[i].type.name + " ";
-          listItem.appendChild(typeTextfeld);
+          FlexBoxNameAndTyps.appendChild(typeTextfeld);
 
           generatePokemonTableTypes(types[i].type.name);
         }
+        FlexBoxImageAndNameAndTyps.appendChild(FlexBoxNameAndTyps);
+        listItem.appendChild(FlexBoxImageAndNameAndTyps);
         const typeTextfeld = document.createElement("p");
         //typeTextfeld.value = typeName;
         //typeTextfeld.textContent = typeName;
