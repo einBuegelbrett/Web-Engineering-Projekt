@@ -5,6 +5,8 @@ const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, unde
 let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, "rock": 0, "bug": 0, "ghost": 0, "steel": 0, "fire": 0, "water": 0, "grass": 0, "electric": 0, "psychic": 0, "ice": 0, "dragon": 0, "dark": 0, "fairy": 0 };
 const typeCoverageBackgroundColor = { "normal": "#a8a899", "fighting": "#a84c3d", "flying": "#87b5e5", "poison": "#864ab8", "ground": "#956833", "rock": "#a8995b", "bug": "#83ad25", "ghost": "#633c64", "steel": "#9999a8", "fire": "#e53b19", "water": "#278bcc", "grass": "#58a951", "electric": "#e5c600", "psychic": "#e55973", "ice": "#68baac", "dragon": "#4d64ab", "dark": "#463e3e", "fairy": "#d480cf"};
 
+let FlexBoxDeleteAndItemDropdown = document.createElement("div");
+FlexBoxDeleteAndItemDropdown.classList.add("DeleteAndItemDropdown");
 
 // Fetch Pokémon data from the PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
@@ -86,7 +88,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           option.textContent = items.results[i].name;
           dropdown.appendChild(option)
         }
-        listItem.appendChild(dropdown);
+        FlexBoxDeleteAndItemDropdown.appendChild(dropdown);
+        console.log()
+        listItem.appendChild(FlexBoxDeleteAndItemDropdown);
         return items;
     }
 
@@ -133,6 +137,15 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     function generateMovesDropdown(listItem, data) {
       // kreiert die abilities dropdown
         const pokemonMoves = data.moves;
+
+        /*
+        <table id="pokemon-table">
+        <tr>
+          <td class="pokemon-type-cell" id="pokemon-1"><img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png"></td>
+        </tr>
+        */
+
+        const moveTable = document.createElement("table");
         
         for (let i = 0; i < 4; i++) {
           const dropdown = document.createElement("select");
@@ -150,12 +163,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           }
           listItem.appendChild(dropdown);
       }
-      console.log("Skip")
-      console.log(pokemonMoves)
-      
 
       return data;
-      }
+    }
 
     function generatePokemonStats(listItem, data) {
         const stats = data.stats;
@@ -208,7 +218,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
        //let removeFromTeam = document.getElementsByClassName("btn btn-danger");
        removeFromTeam.innerHTML = 'Delete';
        removeFromTeam.classList.add("btn",  "btn-danger");
-       listItem.appendChild(removeFromTeam);
+       FlexBoxDeleteAndItemDropdown.appendChild(removeFromTeam);
        removeFromTeam.addEventListener ("click", function() {
 
          // delete pokemon from array
@@ -232,11 +242,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           const type = types[i].type.name;
           let typeTextfeld = document.createElement("div");
           typeTextfeld.innerHTML = `<p class="pokemon-type-text" style="background: ${typeCoverageBackgroundColor[type]};">${type}</p>`
-          console.log(typeTextfeld);
-          //typeTextfeld.setAttribute("id", type);
           typeTextfeld.classList.add("pokemon-type");
-          console.log(typeTextfeld);
-          console.log(type);
           
           //typeName += types[i].type.name + " ";
           listItem.appendChild(typeTextfeld);
