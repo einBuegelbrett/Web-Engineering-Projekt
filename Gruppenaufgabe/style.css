@@ -57,6 +57,19 @@
     height: 8.69em;
   }
 
+  .pokemon-type {
+    width: 3em;
+    height: 2em;
+    text-align: center;
+    color: white;
+    
+  }
+
+  .pokemon-type-text {
+    border: 1px solid white;
+    border-radius: 5em;
+  }
+
   .pokemon-type-cell {
     width: 50em;
     border: 1px solid #ffcb05; /*Anfangssichtbarkeit geht wieder weg*/

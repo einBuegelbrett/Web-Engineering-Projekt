@@ -229,13 +229,24 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
         let typeName = "Type(s): ";
         for (let i = 0; i < types.length; i++) {
-          typeName += types[i].type.name + " ";
+          const type = types[i].type.name;
+          let typeTextfeld = document.createElement("div");
+          typeTextfeld.innerHTML = `<p class="pokemon-type-text" style="background: ${typeBackgroundColor[type]};">${type}</p>`
+          console.log(typeTextfeld);
+          //typeTextfeld.setAttribute("id", type);
+          typeTextfeld.classList.add("pokemon-type");
+          console.log(typeTextfeld);
+          console.log(type);
+          
+          //typeName += types[i].type.name + " ";
+          listItem.appendChild(typeTextfeld);
+
           generatePokemonTableTypes(types[i].type.name);
         }
         const typeTextfeld = document.createElement("p");
-        typeTextfeld.value = typeName;
-        typeTextfeld.textContent = typeName;
-        listItem.appendChild(typeTextfeld);
+        //typeTextfeld.value = typeName;
+        //typeTextfeld.textContent = typeName;
+        //listItem.appendChild(typeTextfeld);
 
         return data;
     }
