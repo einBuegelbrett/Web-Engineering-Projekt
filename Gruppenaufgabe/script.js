@@ -146,13 +146,15 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         */
 
         const moveTable = document.createElement("table");
+        const tr1 = document.createElement("tr");
+        const tr2 = document.createElement("tr");
         
         for (let i = 0; i < 4; i++) {
           const dropdown = document.createElement("select");
           dropdown.classList.add("pokemon-moves-dropdown");
           const defaultOption = document.createElement("option");
           defaultOption.value = "";
-          defaultOption.textContent = "Select move" ;
+          defaultOption.textContent = "Select move";
           dropdown.appendChild(defaultOption);
           
           for (let j = 0; j < pokemonMoves.length; j++) {
@@ -161,7 +163,21 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             option.textContent = pokemonMoves[j].move.name;
             dropdown.appendChild(option);
           }
-          listItem.appendChild(dropdown);
+          if(i == 0 || i == 1)
+          {
+            const th = document.createElement("th");
+            th.appendChild(dropdown);
+            tr1.appendChild(th);
+            if(i == 0) {moveTable.appendChild(tr1)};
+          }
+
+          if (i == 2 || i == 3) {
+            const th = document.createElement("th");
+            th.appendChild(dropdown);
+            tr2.appendChild(th);
+            if(i == 2) {moveTable.appendChild(tr2)};
+          }
+          listItem.appendChild(moveTable);
       }
 
       return data;
