@@ -88,7 +88,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
   
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
-        defaultOption.textContent = "Select an Item" ;
+        defaultOption.textContent = "Select Item" ;
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < 2050; i++) {
@@ -98,7 +98,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           dropdown.appendChild(option)
         }
         FlexBoxDeleteAndItemDropdown.appendChild(dropdown);
-        console.log()
         listItem.appendChild(FlexBoxDeleteAndItemDropdown);
         return items;
     }
@@ -114,6 +113,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
               FlexBoxImageAndNameAndTyps.appendChild(imageElement);
               const pokemonNameElementP = document.createElement("p");
               pokemonNameElementP.textContent = pokemonName
+              pokemonNameElementP.classList.add("pokemon-name-text");
               FlexBoxNameAndTyps.appendChild(pokemonNameElementP);
             }
 
