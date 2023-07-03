@@ -265,6 +265,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         const types = data.types;
 
         let typeName = "Type(s): ";
+
+        let typesdiv = document.createElement("div");
+        typesdiv.classList.add("types-div");
         for (let i = 0; i < types.length; i++) {
           const type = types[i].type.name;
           let typeTextfeld = document.createElement("div");
@@ -272,10 +275,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           typeTextfeld.classList.add("pokemon-type");
           
           //typeName += types[i].type.name + " ";
-          FlexBoxNameAndTyps.appendChild(typeTextfeld);
+          typesdiv.appendChild(typeTextfeld);
 
           generatePokemonTableTypes(types[i].type.name);
         }
+        FlexBoxNameAndTyps.appendChild(typesdiv);
         FlexBoxImageAndNameAndTyps.appendChild(FlexBoxNameAndTyps);
         listItem.appendChild(FlexBoxImageAndNameAndTyps);
         const typeTextfeld = document.createElement("p");
