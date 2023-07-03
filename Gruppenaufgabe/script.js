@@ -15,6 +15,13 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
     //const teamInformation = document.getElementById("single-pokemons");
     const pokemonAbilitiesContainer = document.getElementById("pokemon-abilities-container");
 
+    $(document).ready(function() {
+      $('#pokemon-dropdown').select2({
+        minimumResultsForSearch: 0
+      });
+      console.log(select2())
+    });
+
         // Store the Pokémon details for image retrieval
         const pokemonDetails = data.results.reduce((details, pokemon) => {
           details[pokemon.name] = pokemon.url;
@@ -28,6 +35,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       option.textContent = pokemon.name;
       pokemonDropdown.appendChild(option);
     });
+
+
 
     function generatePokemon(pokemon) {
         const pokemonName = pokemon;
@@ -145,14 +154,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
     function generateMovesDropdown(listItem, data) {
       // kreiert die abilities dropdown
-        const pokemonMoves = data.moves;
-
-        /*
-        <table id="pokemon-table">
-        <tr>
-          <td class="pokemon-type-cell" id="pokemon-1"><img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png"></td>
-        </tr>
-        */
+        const pokemonMoves = data.moves
 
         const moveTable = document.createElement("table");
         const tr1 = document.createElement("tr");
