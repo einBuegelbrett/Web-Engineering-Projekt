@@ -171,6 +171,31 @@
     flex-direction: column;
   }
 
+  .sticky-note {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 9999;
+    text-decoration: none;
+    color: black;
+  }
+
+  .sticky-note:before {
+    content: "↑"; /* Unicode character for an upward arrow */
+  }
+  
+  .sticky-note:hover {
+    background-color: #e0e0e0;
+  }
+
 /*Bigger Screen - Desktop*/
 
 @media (min-width: 1280px) {
