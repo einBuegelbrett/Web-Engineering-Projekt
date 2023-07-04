@@ -19,7 +19,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
       $('#pokemon-dropdown').select2({
         minimumResultsForSearch: 0
       });
-      console.log(select2())
     });
 
         // Store the Pokémon details for image retrieval
@@ -157,6 +156,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         const pokemonMoves = data.moves
 
         const moveTable = document.createElement("table");
+        moveTable.setAttribute('id', 'moves-table');
         const tr1 = document.createElement("tr");
         const tr2 = document.createElement("tr");
         

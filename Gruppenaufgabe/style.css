@@ -91,6 +91,7 @@
   .pokemon-name-text {
     font-size: 1em;
     font-weight: bold;
+    text-shadow:0 0 1px black;
   }
 
   .types-div{
@@ -161,7 +162,7 @@
 
 /*Bigger Screen - Desktop*/
 
-@media (min-width: 1280px) {
+@media (min-width: 80px) {
   #pokemon-table {
     width: 100%;
   }
@@ -184,14 +185,13 @@
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
+    margin-right: 0.5em;
+    text-border: 1px solid black;
   }
 
   .types-div{
     display: flex;
     flex-direction: row;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .pokemon-type-cell select {
@@ -203,7 +203,7 @@
   }
 
   .pokemon-type-cell button {
-    width: 10em; 
+    width: 5em; 
     height: 2em;
   }
 
@@ -215,6 +215,8 @@
   .FlexBoxNameAndTyps {
     padding-left: 2em;
     padding-top: 0em;
+    display: flex;
+    flex-direction: row;
   }
 
   .pokemon-abilities-dropdown {
@@ -227,6 +229,12 @@
   .pokemon-moves-dropdown {
     display: flex;
     flex-direction: column;
+  }
+
+  #moves-table {
+    width: 8em; 
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .DeleteAndItemDropdown {
