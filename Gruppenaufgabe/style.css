@@ -16,8 +16,8 @@
   }
   
   #images-header img {
-    width: 5em;
-    height: 5em;
+    width: 5.5em;
+    height: 5.5em;
     margin-left: 1em;
     margin-right: 1em;
     overflow: auto;
@@ -31,7 +31,7 @@
   #text-header {
     color: #ffcb05;
     text-shadow:0 0 1px black;
-    font-size: 1.5em;
+    font-size: 100;
     text-align: center;
   }
 
@@ -59,8 +59,6 @@
     cursor: pointer;
   }
 
-
-
   h2 {
     padding-top: 0.5em;
   }
@@ -72,14 +70,13 @@
   .pokemon-balls{
     width: 6.5em;
     height: 6.5em;
-    border: 1px solid black;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
 
   .pokemon-bilder {
-    width: 9em;
+    width: 8.69em;
     height: 8.69em;
   }
 
@@ -100,13 +97,14 @@
 
   .pokemon-type-cell {
     width: 100%;
- 
+    border: 1px solid black;
+    border-radius: 20px;
   }
 
   .pokemon-name-text {
     font-size: 1em;
     font-weight: bold;
-    text-shadow:0 0 1px black;
+    text-shadow:0 0 3px black;
   }
 
   .types-div{
@@ -126,6 +124,7 @@
   .FlexBoxImageAndNameAndTyps {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
 
   .FlexBoxNameAndTyps {
@@ -137,6 +136,16 @@
 
   .pokemon-abilities-dropdown {
     margin-bottom: 1em;
+    display: block;
+    margin-left: 20%;
+    margin-right: auto;
+  }
+
+  #moves-table {
+    width: 5em; 
+    margin-left: 8%;
+    margin-right: auto;
+    font-size: 90%;
   }
 
   .pokemon-moves-dropdown {
@@ -152,6 +161,9 @@
   .pokemon-items-dropdown {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+    display: block;
+    margin-left: 20%;
+    margin-right: auto;
   }
 
   .btn.btn-danger {
@@ -224,19 +236,27 @@
 
   .pokemon-type-cell {
     width: 33%;
-    border: 1px solid black; /*Anfangssichtbarkeit geht wieder weg*/
+    border: 1px solid black; 
     border-radius: 20px;
   }
 
+  .pokemon-balls{
+    width: 6.5em;
+    height: 6.5em;
+    display: inline;
+    position: relative; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+  }
+
   .pokemon-bilder {
-    width: 8.69em;
+    width: 8.6em;
     height: 8.69em;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-
-  
 
   .pokemon-name-text {
     margin-top: 0em;
