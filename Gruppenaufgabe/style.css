@@ -84,7 +84,7 @@
   }
 
   .pokemon-type-cell {
-    width: 50em;
+    width: 100%;
     border: 1px solid #ffcb05; /*Anfangssichtbarkeit geht wieder weg*/
   }
 
@@ -144,9 +144,24 @@
     margin-bottom: 1em;
   }
 
+  #team-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #team-details-first-half {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #team-details-second-half {
+    display: flex;
+    flex-direction: column;
+  }
+
 /*Bigger Screen - Desktop*/
 
-@media (min-width: 80px) {
+@media (min-width: 1280px) {
   #pokemon-table {
     width: 100%;
   }
@@ -157,8 +172,8 @@
   }
 
   .pokemon-bilder {
-    width: 10em;
-    height: 10em;
+    width: 8.69em;
+    height: 8.69em;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -166,7 +181,7 @@
 
   .pokemon-name-text {
     margin-top: 0em;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     text-align: center;
   }
@@ -180,14 +195,15 @@
   }
 
   .pokemon-type-cell select {
-    width: 10em; 
+    width: 8em; 
+    height: 1.5em;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
 
   .pokemon-type-cell button {
-    width: 5em; 
+    width: 10em; 
     height: 2em;
   }
 
@@ -221,6 +237,21 @@
   .pokemon-items-dropdown {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+  }
+
+  #team-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #team-details-first-half {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #team-details-second-half {
+    display: flex;
+    flex-direction: row;
   }
   
 
