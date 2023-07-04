@@ -173,7 +173,7 @@
 
 /*Bigger Screen - Desktop*/
 
-@media (min-width: 80px) {
+@media (min-width: 1280px) {
   #pokemon-table {
     width: 100%;
   }
