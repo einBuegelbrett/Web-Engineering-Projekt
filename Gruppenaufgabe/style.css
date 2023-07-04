@@ -342,9 +342,11 @@
     flex-direction: column-reverse;
   }
 
-  .pokemon-items-dropdown {
+  .select2-container {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+    text-shadow: none;
+    color: black;
   }
 
   #team-details {

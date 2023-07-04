@@ -20,6 +20,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         minimumResultsForSearch: 0
       });
     });
+    
 
         // Store the Pokémon details for image retrieval
         const pokemonDetails = data.results.reduce((details, pokemon) => {
@@ -93,10 +94,14 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         const dropdown = document.createElement("select");
 
         dropdown.classList.add("pokemon-items-dropdown");
+
+        $(document).ready(function() {
+          $('.pokemon-items-dropdown').select2({
+          });
+        });
   
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
-        defaultOption.textContent = "Select Item" ;
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < 2050; i++) {
