@@ -95,13 +95,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
         dropdown.classList.add("pokemon-items-dropdown");
 
-        $(document).ready(function() {
-          $('.pokemon-items-dropdown').select2({
-          });
-        });
-  
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
+        defaultOption.textContent = "Select Item" 
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < 2050; i++) {

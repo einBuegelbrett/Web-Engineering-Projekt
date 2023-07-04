@@ -31,7 +31,7 @@
   #text-header {
     color: #ffcb05;
     text-shadow:0 0 1px black;
-    font-size: 100;
+    font-size: 200%;
     text-align: center;
   }
 
@@ -342,11 +342,12 @@
     flex-direction: column-reverse;
   }
 
-  .select2-container {
+  .pokemon-items-dropdown {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    text-shadow: none;
-    color: black;
+    display: block;
+    margin-left: 20%;
+    margin-right: auto;
   }
 
   #team-details {
