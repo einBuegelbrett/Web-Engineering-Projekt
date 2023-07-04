@@ -46,6 +46,10 @@
     padding-top: 0em;
   }
 
+  #type-coverage th {
+    text-align: center;
+  }
+
   #select2-pokemon-dropdown-container {
     text-shadow:0 0 0px black;
   }
@@ -75,7 +79,7 @@
   }
 
   .pokemon-bilder {
-    width: 8.69em;
+    width: 9em;
     height: 8.69em;
   }
 
@@ -96,7 +100,7 @@
 
   .pokemon-type-cell {
     width: 100%;
-    border: 1px solid #ffcb05; /*Anfangssichtbarkeit geht wieder weg*/
+ 
   }
 
   .pokemon-name-text {
@@ -151,6 +155,7 @@
   }
 
   .btn.btn-danger {
+    padding-top: 0.25em;
     margin-left: auto; 
     margin-right: 1em;
     margin-bottom: 1em;
@@ -198,14 +203,29 @@
 
 /*Bigger Screen - Desktop*/
 
-@media (min-width: 1280px) {
+@media (min-width: 800px) {
   #pokemon-table {
     width: 100%;
   }
 
+  #pokemon-selection, #type-coverage, #team-info {
+    background-color:#3790e4;
+    color: #ffcb05;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-shadow:0 0 3px black;
+    padding: 1em;
+    padding-top: 0em;
+  }
+
+  #type-coverage th {
+    text-align: center;
+  }
+
   .pokemon-type-cell {
-    width: 100%;
-    border: 1px solid #ffcb05; /*Anfangssichtbarkeit geht wieder weg*/
+    width: 33%;
+    border: 1px solid black; /*Anfangssichtbarkeit geht wieder weg*/
+    border-radius: 20px;
   }
 
   .pokemon-bilder {
@@ -216,13 +236,34 @@
     margin-right: auto;
   }
 
+  
+
   .pokemon-name-text {
     margin-top: 0em;
-    font-size: 1.5em;
+    font-size: 100%;
     font-weight: bold;
     text-align: center;
     margin-right: 0.5em;
     text-shadow:0 0 3px black;
+  }
+
+  
+  .pokemon-type {
+    display: inline-block;
+    width: 4em;
+    height: 2.3em;
+    text-align: center;
+    margin-right: 0.1em;
+  }
+
+  .pokemon-type-text {
+    font-size: 85%;
+    font-weight: bold;
+    color: white;
+    border: rgba(255, 255, 255, .5) solid 2px;
+    width: inherit;
+    padding-bottom: 5%;
+    border-radius: 0.5em;
   }
 
   .types-div{
@@ -249,8 +290,10 @@
   }
 
   .FlexBoxNameAndTyps {
-    padding-left: 2em;
+    padding-left: 1em;
     padding-top: 0em;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
   }
@@ -268,7 +311,8 @@
   }
 
   #moves-table {
-    width: 8em; 
+    width: inherit; 
+    font-size: 90%;
     margin-left: auto;
     margin-right: auto;
   }
