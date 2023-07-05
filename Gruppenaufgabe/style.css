@@ -99,8 +99,9 @@
 
   .pokemon-type-cell {
     width: 100%;
-    border: 1px solid black;
+    border: 2px solid #2a75bb;
     border-radius: 20px;
+    margin: 2px;
   }
 
   .pokemon-name-text {
@@ -248,8 +249,7 @@
 
   .pokemon-type-cell {
     width: 33%;
-    border: 1px solid black; 
-    border-radius: 20px;
+    margin: 2px;
   }
 
   .pokemon-balls{
