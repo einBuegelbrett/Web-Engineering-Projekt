@@ -42,7 +42,7 @@
 }
 
 .pricing-price {
-    color: darkblue;
+    color: blue;
     font-size: 32px;
     font-weight: bold;
 }
@@ -56,7 +56,7 @@
     text-decoration: none;
     width: 8em;
     border: 2px solid lightblue;
-    border-radius: 6px;
+    border-radius: 15px;
     margin: 2em auto; 
     padding: 0.8em;
 }
@@ -66,7 +66,7 @@
     text-decoration: none;
     width: 8em;
     border: 2px solid lightblue;
-    border-radius: 6px;
+    border-radius: 15px;
     margin: 2em auto; 
     padding: 0.8em;
     color: white;
@@ -85,7 +85,7 @@
 
 @media (min-width: 800px) {
     .pricing-table {
-        border: 3em solid lightblue;
+        border: 3em solid deepskyblue;
         flex-direction: row;
         width: 90%;
         justify-content: center;
