@@ -92,8 +92,16 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         const items = data;
 
         const dropdown = document.createElement("select");
+        dropdown.classList.add("select-class");
 
-        dropdown.classList.add("pokemon-items-dropdown");
+        let DivItemsDropdown = document.createElement("div");
+        DivItemsDropdown.classList.add("pokemon-items-dropdown");
+
+        $(document).ready(function() {
+          $('.select-class').select2({
+            minimumResultsForSearch: 0
+          });
+        });
 
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
@@ -106,8 +114,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           option.textContent = items.results[i].name;
           dropdown.appendChild(option)
         }
-        FlexBoxDeleteAndItemDropdown.appendChild(dropdown);
+        DivItemsDropdown.appendChild(dropdown);
+        FlexBoxDeleteAndItemDropdown.appendChild(DivItemsDropdown);
         listItem.appendChild(FlexBoxDeleteAndItemDropdown);
+
         return items;
     }
 
@@ -135,7 +145,16 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         const abilities = data.abilities;
 
         const dropdown = document.createElement("select");
-        dropdown.classList.add("pokemon-abilities-dropdown");
+        dropdown.classList.add("select-class");
+
+        let DivAbilitiesDropdown = document.createElement("div");
+        DivAbilitiesDropdown.classList.add("pokemon-abilities-dropdown");
+
+        $(document).ready(function() {
+          $('.select-class').select2({
+            minimumResultsForSearch: 0
+          });
+        });
   
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
@@ -148,7 +167,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           option.textContent = abilities[i].ability.name;
           dropdown.appendChild(option);
         }
-        listItem.appendChild(dropdown);
+
+        DivAbilitiesDropdown.appendChild(dropdown);
+        listItem.appendChild(DivAbilitiesDropdown);
         return data;
     }
 
@@ -163,7 +184,17 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
         
         for (let i = 0; i < 4; i++) {
           const dropdown = document.createElement("select");
-          dropdown.classList.add("pokemon-moves-dropdown");
+          dropdown.classList.add("select-class");
+
+          let DivMovesDropdown = document.createElement("div");
+          DivMovesDropdown.classList.add("pokemon-moves-dropdown");
+
+          $(document).ready(function() {
+            $('.select-class').select2({
+              minimumResultsForSearch: 0
+            });
+          });
+
           const defaultOption = document.createElement("option");
           defaultOption.value = "";
           defaultOption.textContent = "Select move";
@@ -178,14 +209,20 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
           if(i == 0 || i == 1)
           {
             const th = document.createElement("th");
-            th.appendChild(dropdown);
+
+            DivMovesDropdown.appendChild(dropdown);
+            th.appendChild(DivMovesDropdown);
+
             tr1.appendChild(th);
             if(i == 0) {moveTable.appendChild(tr1)};
           }
 
           if (i == 2 || i == 3) {
             const th = document.createElement("th");
-            th.appendChild(dropdown);
+
+            DivMovesDropdown.appendChild(dropdown);
+            th.appendChild(DivMovesDropdown);
+            
             tr2.appendChild(th);
             if(i == 2) {moveTable.appendChild(tr2)};
           }

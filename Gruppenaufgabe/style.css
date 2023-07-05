@@ -51,11 +51,13 @@
   }
 
   #select2-pokemon-dropdown-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     text-shadow:0 0 0px black;
   }
 
   #select2-pokemon-dropdown-container:hover {
-
     cursor: pointer;
   }
 
@@ -139,6 +141,14 @@
     display: block;
     margin-left: 20%;
     margin-right: auto;
+    text-shadow:0 0 0px black;
+  }
+
+  .pokemon-moves-dropdown {
+    margin-bottom: 0.2em;
+    text-shadow:0 0 0px black;
+    display: flex;
+    flex-direction: column;
   }
 
   #moves-table {
@@ -146,11 +156,6 @@
     margin-left: 8%;
     margin-right: auto;
     font-size: 90%;
-  }
-
-  .pokemon-moves-dropdown {
-    display: flex;
-    flex-direction: column;
   }
 
   .DeleteAndItemDropdown {
@@ -164,6 +169,7 @@
     display: block;
     margin-left: 20%;
     margin-right: auto;
+    text-shadow:0 0 0px black;
   }
 
   .btn.btn-danger {
@@ -206,7 +212,7 @@
   }
 
   .sticky-note:before {
-    content: "↑"; /* Unicode character for an upward arrow */
+    content: "↑"; 
   }
   
   .sticky-note:hover {
