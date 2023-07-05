@@ -5,6 +5,14 @@ const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, unde
 let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, "rock": 0, "bug": 0, "ghost": 0, "steel": 0, "fire": 0, "water": 0, "grass": 0, "electric": 0, "psychic": 0, "ice": 0, "dragon": 0, "dark": 0, "fairy": 0 };
 const typeCoverageBackgroundColor = { "normal": "#a8a899", "fighting": "#a84c3d", "flying": "#87b5e5", "poison": "#864ab8", "ground": "#956833", "rock": "#a8995b", "bug": "#83ad25", "ghost": "#633c64", "steel": "#9999a8", "fire": "#e53b19", "water": "#278bcc", "grass": "#58a951", "electric": "#e5c600", "psychic": "#e55973", "ice": "#68baac", "dragon": "#4d64ab", "dark": "#463e3e", "fairy": "#d480cf"};
 
+let itemsList;
+
+fetch('https://pokeapi.co/api/v2/item/?limit=2050')
+.then(response => response.json())
+.then(items => {
+  itemsList = items;
+}); 
+
 // Fetch Pokémon data from the PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
   .then(response => response.json())
@@ -35,8 +43,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
       option.textContent = pokemon.name;
       pokemonDropdown.appendChild(option);
     });
-
-
 
     function generatePokemon(pokemon) {
         const pokemonName = pokemon;
@@ -81,10 +87,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             .then(data => generateAbilitiesDropdown(listItem, data))
             .then(data => generateMovesDropdown(listItem, data))
             .then(data => generateDeleteButton(FlexBoxDeleteAndItemDropdown, data))
-            .then(() => fetch('https://pokeapi.co/api/v2/item/?limit=2050'))
-            .then(response => response.json())
-            .then(items => {
-              generateItemDropdown(listItem, FlexBoxDeleteAndItemDropdown, items);
+            .then(() => {
+              generateItemDropdown(listItem, FlexBoxDeleteAndItemDropdown, itemsList);
             });        
     }}
 
