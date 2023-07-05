@@ -1,12 +1,10 @@
 // Globale Varbiablen
 const max_pokemon_team = 6;
 let size_team = 0;
-// eigentlich array
-const pokemonTeam = [undefined, undefined, undefined, undefined, undefined, undefined];
 let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, "rock": 0, "bug": 0, "ghost": 0, "steel": 0, "fire": 0, "water": 0, "grass": 0, "electric": 0, "psychic": 0, "ice": 0, "dragon": 0, "dark": 0, "fairy": 0 };
 const typeCoverageBackgroundColor = { "normal": "#a8a899", "fighting": "#a84c3d", "flying": "#87b5e5", "poison": "#864ab8", "ground": "#956833", "rock": "#a8995b", "bug": "#83ad25", "ghost": "#633c64", "steel": "#9999a8", "fire": "#e53b19", "water": "#278bcc", "grass": "#58a951", "electric": "#e5c600", "psychic": "#e55973", "ice": "#68baac", "dragon": "#4d64ab", "dark": "#463e3e", "fairy": "#d480cf"};
 
-// Items werden nur einmal geladen
+// Items werden geladen
 let itemsList;
 fetch('https://pokeapi.co/api/v2/item/?limit=2050')
 .then(response => response.json())
@@ -21,6 +19,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
     const addToTeamBtn = document.getElementById("add-to-team");
 
+    // select2 dropdown Menu
     $(document).ready(function() {
       $('#pokemon-dropdown').select2({
         minimumResultsForSearch: 0
@@ -41,21 +40,24 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
       pokemonDropdown.appendChild(option);
     });
 
+    // generiert das Pokemon
     function generatePokemon(pokemon) {
         const pokemonName = pokemon;
         if (pokemonName) {
-
-          let listItem;
+          let pokemonID;
           let string
+
+          // geht zu der Stelle wo noch frei ist 
           for(i = 1; i < 7; i++)
           {
             string = "pokemon-" + i;
-            listItem = document.getElementById(string);
-            if(listItem.innerHTML == '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">'){
+            pokemonID = document.getElementById(string);
+            if(pokemonID.innerHTML == '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">'){
               break;
             }
           } 
 
+          // Die Flexboxen werden hier kreiert
           let FlexBoxDeleteAndItemDropdown = document.createElement("div");
           FlexBoxDeleteAndItemDropdown.classList.add("DeleteAndItemDropdown");
 
@@ -64,11 +66,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
 
           let FlexBoxNameAndTyps = document.createElement("div");
           FlexBoxNameAndTyps.classList.add("FlexBoxNameAndTyps");
-          listItem.textContent = '';
+          pokemonID.textContent = '';
           FlexBoxDeleteAndItemDropdown.textContent = "";
           FlexBoxImageAndNameAndTyps.textContent = "";
           FlexBoxNameAndTyps.textContent = "";
          
+          // poekmondaten werden gefetcht und dann wird der ganze dazugehörige Inhalt geladen
         const pokemonURL = pokemonDetails[pokemonName];
           fetch(pokemonURL)
             .then(response => response.json())
@@ -76,19 +79,19 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)) 
             .then(response => response.json())
             .then(data => {
-              //teamInformation.appendChild(listItem) // Append the <li> element to the team list
-              generatePokemonTypes(listItem, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data)
+              generatePokemonTypes(pokemonID, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data)
               return data;
             })
-            .then(data => generateAbilitiesDropdown(listItem, data))
-            .then(data => generateMovesDropdown(listItem, data))
+            .then(data => generateAbilitiesDropdown(pokemonID, data))
+            .then(data => generateMovesDropdown(pokemonID, data))
             .then(data => generateDeleteButton(FlexBoxDeleteAndItemDropdown, data))
             .then(() => {
-              generateItemDropdown(listItem, FlexBoxDeleteAndItemDropdown, itemsList);
+              generateItemDropdown(pokemonID, FlexBoxDeleteAndItemDropdown, itemsList);
             });        
     }}
 
-    function generateItemDropdown(listItem, FlexBoxDeleteAndItemDropdown, data) {
+
+    function generateItemDropdown(pokemonID, FlexBoxDeleteAndItemDropdown, data) {
         const items = data;
 
         const dropdown = document.createElement("select");
@@ -116,7 +119,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
         }
         DivItemsDropdown.appendChild(dropdown);
         FlexBoxDeleteAndItemDropdown.appendChild(DivItemsDropdown);
-        listItem.appendChild(FlexBoxDeleteAndItemDropdown);
+        pokemonID.appendChild(FlexBoxDeleteAndItemDropdown);
 
         return items;
     }
@@ -139,9 +142,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             return data;
       }
 
-    function generateAbilitiesDropdown(listItem, data) {
-
       // kreiert die abilities dropdown
+    function generateAbilitiesDropdown(pokemonID, data) {
+
         const abilities = data.abilities;
 
         const dropdown = document.createElement("select");
@@ -169,13 +172,13 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
         }
 
         DivAbilitiesDropdown.appendChild(dropdown);
-        listItem.appendChild(DivAbilitiesDropdown);
+        pokemonID.appendChild(DivAbilitiesDropdown);
         return data;
     }
+    
+    // kreiert die moves dropdown
+    function generateMovesDropdown(pokemonID, data) {
 
-    function generateMovesDropdown(listItem, data) {
-
-      // kreiert die moves dropdown
         const pokemonMoves = data.moves
 
         const moveTable = document.createElement("table");
@@ -227,9 +230,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             tr2.appendChild(th);
             if(i == 2) {moveTable.appendChild(tr2)};
           }
-          listItem.appendChild(moveTable);
+          pokemonID.appendChild(moveTable);
       }
-
       return data;
     }
 
@@ -243,16 +245,16 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
        removeFromTeam.addEventListener ("click", function() {
 
          // pokemon vom array löschen
-         const listItem = this.parentNode.parentNode;
+         const entirepokemon = this.parentNode.parentNode;
 
          size_team--;
          deletePokemonTypes(data);
-         listItem.innerHTML = '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">';
+         entirepokemon.innerHTML = '<img class="pokemon-balls" alt="pokeball-icon" src="images/placeholder/pokeball.png">';
        });
        return data;
     }
 
-    function generatePokemonTypes(listItem, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data) {
+    function generatePokemonTypes(pokemonID, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data) {
         const types = data.types;
 
         let typesdiv = document.createElement("div");
@@ -269,7 +271,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
         }
         FlexBoxNameAndTyps.appendChild(typesdiv);
         FlexBoxImageAndNameAndTyps.appendChild(FlexBoxNameAndTyps);
-        listItem.appendChild(FlexBoxImageAndNameAndTyps);
+        pokemonID.appendChild(FlexBoxImageAndNameAndTyps);
         const typeTextfeld = document.createElement("p");
 
         return data;
@@ -320,7 +322,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
         trTableImage.appendChild(thZelleBild);
         trTableNumber.appendChild(thZelleZahl);
       }
-
     }
 
     // Hizufügen des event listener zu dem "Add to Team" Knopf
@@ -329,8 +330,8 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
 
       if (selectedPokemon && size_team < max_pokemon_team) {
         size_team++;
-        const listItem = document.createElement("li");
-        listItem.textContent = selectedPokemon;
+        const liElement = document.createElement("li");
+        liElement.textContent = selectedPokemon;
 
         generatePokemon(selectedPokemon);
       }
