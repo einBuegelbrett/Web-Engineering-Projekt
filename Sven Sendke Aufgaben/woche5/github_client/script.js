@@ -2,7 +2,7 @@ const token = '';
 
 function fetchButton() {
     const input = document.getElementById('password').value;
-    console.log(input);
+    
     fetch('https://api.github.com/user/repos', {
         headers: {
             'Authorization': 'Bearer ' + input
@@ -26,12 +26,8 @@ function fetchButton() {
         document.getElementById('message').textContent = 'Es hat geklappt :)';
     })
     .catch(error => {
-        console.log(error);
-        document.getElementById('message').textContent = 'Fehler: ' + error.message;
+        document.getElementById('message').textContent = error.message;
     });
-
-    //.then(data => console.log(data))
-    //.catch(error => console.log(error));
 }
 
 addEventListener('submit', fetchButton());
