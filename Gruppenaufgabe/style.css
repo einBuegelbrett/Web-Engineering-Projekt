@@ -142,6 +142,7 @@
     margin-left: 20%;
     margin-right: auto;
     text-shadow:0 0 0px black;
+    font-weight: normal;
   }
 
   .pokemon-moves-dropdown {
@@ -149,6 +150,7 @@
     text-shadow:0 0 0px black;
     display: flex;
     flex-direction: column;
+    font-weight: normal;
   }
 
   #moves-table {
@@ -170,6 +172,7 @@
     margin-left: 20%;
     margin-right: auto;
     text-shadow:0 0 0px black;
+    font-weight: normal;
   }
 
   .btn.btn-danger {
@@ -327,8 +330,9 @@
   .pokemon-abilities-dropdown {
     margin-bottom: 1em;
     display: block;
-    margin-left: auto;
+    margin-left: 30%;
     margin-right: auto;
+    text-shadow:0 0 0px black;
   }
 
   .pokemon-moves-dropdown {
@@ -352,8 +356,9 @@
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     display: block;
-    margin-left: 20%;
+    margin-left: 30%;
     margin-right: auto;
+    text-shadow:0 0 0px black;
   }
 
   #team-details {
