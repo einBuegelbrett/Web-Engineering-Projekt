@@ -6,7 +6,7 @@ let dict = { "normal": 0, "fighting": 0, "flying": 0, "poison": 0, "ground": 0, 
 const typeCoverageBackgroundColor = { "normal": "#a8a899", "fighting": "#a84c3d", "flying": "#87b5e5", "poison": "#864ab8", "ground": "#956833", "rock": "#a8995b", "bug": "#83ad25", "ghost": "#633c64", "steel": "#9999a8", "fire": "#e53b19", "water": "#278bcc", "grass": "#58a951", "electric": "#e5c600", "psychic": "#e55973", "ice": "#68baac", "dragon": "#4d64ab", "dark": "#463e3e", "fairy": "#d480cf"};
 
 // Fetch Pokémon data from the PokeAPI
-fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
   .then(response => response.json())
   .then(data => {
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
@@ -105,7 +105,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
-        defaultOption.textContent = "Select Item" 
+        defaultOption.textContent = items.results[i].name;
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < 2050; i++) {
@@ -158,7 +158,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
   
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
-        defaultOption.textContent = "Select ability" ;
+        defaultOption.textContent = abilities[0].ability.name;
         dropdown.appendChild(defaultOption);
         
         for (let i = 0; i < abilities.length; i++) {
@@ -197,7 +197,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 
           const defaultOption = document.createElement("option");
           defaultOption.value = "";
-          defaultOption.textContent = "Select move";
+          defaultOption.textContent = pokemonMoves[0].move.name;
           dropdown.appendChild(defaultOption);
           
           for (let j = 0; j < pokemonMoves.length; j++) {
