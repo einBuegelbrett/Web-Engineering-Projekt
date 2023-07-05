@@ -116,7 +116,7 @@
   }
 
   .pokemon-type-cell select {
-    width: 4em; 
+    width: 10em; 
     height: 1.5em;
     font-size: 0.818em;
   }
