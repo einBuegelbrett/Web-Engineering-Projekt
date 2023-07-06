@@ -1,0 +1,47 @@
+.panelpricing-table {
+    display: flex;
+    flex-direction: row;
+}
+
+.pricing-plan {
+    padding: 30px
+}
+
+.pricing-plan:nth-child(2) {
+    border-left: 1px solid lightblue;
+    border-right: 1px solid lightblue;
+}
+
+.pricing-features-item {
+    border-top: 1px solid lightblue;
+    text-align: center;
+    padding: 10px
+}
+
+.pricing-price {
+    border-top: 1px solid lightblue;
+}
+
+.pricing-header {
+    text-align:center;
+    margin-bottom: 50px;
+    color: lightgray;
+}
+
+ul {
+    list-style-type: none
+    ;
+}
+
+.pricing-button{
+    padding: 20px;
+    border-radius: 5px;
+    width:fit-content;
+    display: block;
+    border: 1px solid lightblue;
+    text-align: center;
+}
+
+.pricing-button.is-featured {
+    background-color: teal
+}
