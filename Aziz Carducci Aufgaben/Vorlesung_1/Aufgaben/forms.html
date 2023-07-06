@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marathon Registirierung</title>
+</head>
+<body>
+    <form>
+        <div>
+          <label for="vorname_id">Vorname:</label>
+          <input type="text" id="vorname_id" name="vorname" required>
+          <label for="nachname_id">Nachname:</label>
+          <input type="text" id="nachname_id" name="nachname" required>
+        </div>
+
+          <div>
+            <p>Wähle die Distanz:</p>
+            <input type="radio" id="spaßlauf" name="Distanzauswahl" required>
+            <label for="spaßlauf">Spaßlauf</label>
+            <br>
+            <input type="radio" id="halbmarathon" name="Distanzauswahl"required>
+            <label for="halbmarathon">Halbmarathon</label>
+            <br>
+            <input type="radio" id="marathon" name="Distanzauswahl" required>
+            <label for="marathon">Marathon</label>
+          </div>
+
+        <div>
+          <label for="email_id">Email:</label>
+          <input type="email" id="email_id" name="email" required>
+
+          <label for="passwort_id">Passwort:</label>
+          <input type="password" id="passwort_id" name="passwort" required>
+        </div>
+        <div>
+          <label for="alter">Alter:</label>
+          <select id="alter">
+            <option value="unter18" selected>Unter 18</option>
+            <option value="18-25">18-25</option>
+            <option value="26-30">26-30</option>
+            <option value="31-50">31-50</option>
+            <option value="über50">Über 50</option>
+          </select>
+        </div>
+        <button type="submit">Registrieren!</button>
+      </form>
+      
+</body>
+</html>
