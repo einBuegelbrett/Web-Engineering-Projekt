@@ -16,26 +16,22 @@ function won(player) {
     if (board[2] == player && board[4] == player && board[6] == player) return true
 }
 
+function isBoardFull() {
+    return board.every(cell => cell !== '');
+}
+
 function makeMove(index) {
     if (board[index] === '' && !gameOver){
         board[index] = currentPlayer;
         document.getElementsByClassName("cell")[index].innerHTML = currentPlayer;
-        if(currentPlayer === 'O'){
-            if(won(currentPlayer)){
-                gameOver = true;
-            }
-            else {
-                currentPlayer = 'X'
-            }    
-        }
-        else {
-            if(won(currentPlayer)){
-                gameOver = true;
-            }
-            else {
-                currentPlayer = 'O';
-            }  
-        }   
+
+        if (won(currentPlayer)) {
+            gameOver = true;
+        } else if (isBoardFull()) {
+            alert("It's a tie!");
+        } else {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        } 
     }
 
     if(gameOver){
