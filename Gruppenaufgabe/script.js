@@ -115,6 +115,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             .then(response => response.json())
             .then(data => {
               generatePokemonTypes(pokemonID, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data)
+              
+              let select =  document.getElementById("pokemon-selection");
+              if(select.classList.contains('pokemon-selection')) {
+                select.remove("pokemon-selection");
+              }
+
               return data;
             })
             .catch(error => {
