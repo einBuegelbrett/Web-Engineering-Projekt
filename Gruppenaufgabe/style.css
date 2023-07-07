@@ -1,5 +1,9 @@
   /*Smaller Screen - Mobile*/
 
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
 
   header {
     background-color: #2a75bb;

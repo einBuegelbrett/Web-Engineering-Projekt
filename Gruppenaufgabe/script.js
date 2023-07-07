@@ -10,12 +10,31 @@ fetch('https://pokeapi.co/api/v2/item/?limit=2050')
 .then(response => response.json())
 .then(items => {
   itemsList = items;
+
+  let select =  document.getElementById("pokemon-selection");
+  if(select.classList.contains('pokemon-selection')) {
+    select.remove("pokemon-selection");
+  }
+})
+.catch(error => {
+  console.log("Error fetching Item data:", error);
+  let container = document.getElementById("pokemon-selection");
+  let errorMessage = document.createElement("p");
+  errorMessage.classList.add("error-message");
+  errorMessage.innerHTML = "couldn't load item list !"
+  container.appendChild(errorMessage);
 }); 
 
 // Fetch Pokémon data von der PokeAPI
 fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
   .then(response => response.json())
   .then(data => {
+    
+    let select =  document.getElementById("pokemon-selection");
+    if(select.classList.contains('pokemon-selection')) {
+      select.remove("pokemon-selection");
+    }
+
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
     const addToTeamBtn = document.getElementById("add-to-team");
 
@@ -75,21 +94,45 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
         const pokemonURL = pokemonDetails[pokemonName];
           fetch(pokemonURL)
             .then(response => response.json())
-            .then(data => generatePokemonImage(pokemonName, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data))
-            .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)) 
+            .then(data => {
+              generatePokemonImage(pokemonName, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data);
+
+              let select =  document.getElementById("pokemon-selection");
+              if(select.classList.contains('pokemon-selection')) {
+                select.remove("pokemon-selection");
+              }
+
+            })
+            .catch(error => {
+              console.log("Error fetching Pokémon data:", error);
+              let container = document.getElementById("pokemon-selection");
+              let errorMessage = document.createElement("p");
+              errorMessage.classList.add("error-message");
+              errorMessage.innerHTML = "couldn't load Pokémon image !"
+              container.appendChild(errorMessage);
+            }) 
+            .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`))
             .then(response => response.json())
             .then(data => {
               generatePokemonTypes(pokemonID, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data)
               return data;
             })
+            .catch(error => {
+              console.log("Error fetching Pokémon data:", error);
+              let container = document.getElementById("pokemon-selection");
+              let errorMessage = document.createElement("p");
+              errorMessage.classList.add("error-message");
+              errorMessage.innerHTML = "couldn't load Pokémon information !"
+              container.appendChild(errorMessage);
+            }) 
             .then(data => generateAbilitiesDropdown(pokemonID, data))
             .then(data => generateMovesDropdown(pokemonID, data))
             .then(data => generateDeleteButton(FlexBoxDeleteAndItemDropdown, data))
             .then(() => {
               generateItemDropdown(pokemonID, FlexBoxDeleteAndItemDropdown, itemsList);
-            });        
+            });
+                 
     }}
-
 
     function generateItemDropdown(pokemonID, FlexBoxDeleteAndItemDropdown, data) {
         const items = data;
@@ -336,7 +379,12 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
         generatePokemon(selectedPokemon);
       }
     });
-  })
-  .catch(error => {
-    console.log("Error fetching Pokémon data:", error);
-  });
+})
+.catch(error => {
+  console.log("Error fetching Pokémon data:", error);
+  let container = document.getElementById("pokemon-selection");
+  let errorMessage = document.createElement("p");
+  errorMessage.classList.add("error-message");
+  errorMessage.innerHTML = "couldn't load pokémon list !"
+  container.appendChild(errorMessage);
+});
