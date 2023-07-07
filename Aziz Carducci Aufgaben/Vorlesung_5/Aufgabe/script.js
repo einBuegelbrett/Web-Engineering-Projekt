@@ -1,25 +1,19 @@
 // script.js
-//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
 
 function getToken() {
-  //const token = document.getElementById('password').value;
+  const token = document.getElementById('password').value;
 
-  const input = document.getElementById('password').value;
-    
-    fetch('https://api.github.com/user/repos', {
-        headers: {
-            'Authorization': 'Bearer ' + input
-        }
-    })
-
+  fetch('https://api.github.com/user/repos', {
+    headers: {
+      'Authorization': 'Bearer ' + token
+  }
+  })
   .then(response => {
     if (response.ok) {
       return response.json();
     } 
-    else {
-      throw new Error('hund');
-    }
   })
+
     .then(data => {
       displayRepositories(data);
       document.getElementById('message').textContent = 'Success';
