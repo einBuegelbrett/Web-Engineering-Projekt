@@ -11,9 +11,12 @@ fetch('https://pokeapi.co/api/v2/item/?limit=2050')
 .then(items => {
   itemsList = items;
 
-  let select =  document.getElementById("pokemon-selection");
-  if(select.classList.contains('pokemon-selection')) {
-    select.remove("pokemon-selection");
+  let select = document.getElementById("pokemon-selection");
+  let errorClass = document.getElementsByClassName("error-message");
+  if(errorClass) {
+    console.log(errorClass);
+    select.removeChild(errorClass);
+    console.log(select);
   }
 })
 .catch(error => {
@@ -31,8 +34,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
   .then(data => {
     
     let select =  document.getElementById("pokemon-selection");
-    if(select.classList.contains('pokemon-selection')) {
-      select.remove("pokemon-selection");
+    let errorClass =  document.getElementsByClassName("error-message");
+    if(errorClass) {
+      select.remove("error-message");
     }
 
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
@@ -98,10 +102,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
               generatePokemonImage(pokemonName, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data);
 
               let select =  document.getElementById("pokemon-selection");
-              if(select.classList.contains('pokemon-selection')) {
-                select.remove("pokemon-selection");
+              let errorClass =  document.getElementsByClassName("error-message");
+              if(errorClass) {
+                select.remove("error-message");
               }
-
             })
             .catch(error => {
               console.log("Error fetching Pokémon data:", error);
@@ -117,8 +121,9 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
               generatePokemonTypes(pokemonID, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data)
               
               let select =  document.getElementById("pokemon-selection");
-              if(select.classList.contains('pokemon-selection')) {
-                select.remove("pokemon-selection");
+              let errorClass =  document.getElementsByClassName("error-message");
+              if(errorClass) {
+                select.remove("error-message");
               }
 
               return data;
