@@ -6,7 +6,7 @@ Diese Website wird dir dabei helfen, dein Pokémon-Team zu planen.
 
 ## API
 
-Diese Implementierung verwendet die [PokéAPI v2] (https://pokeapi.co/docs/v2) um Informationen über Pokémons und Items abzurufen.
+Diese Implementierung verwendet die [PokéAPI v2](https://pokeapi.co/docs/v2) um Informationen über Pokémons und Items abzurufen.
 
 ## Funktionen
 * Pokémon-Suche: Du kannst nach einem bestimmten Pokémon suchen, es zu deinem Team hinzufügen und seine Fähigkeiten, Attacken und Items nach Belieben ändern. 
