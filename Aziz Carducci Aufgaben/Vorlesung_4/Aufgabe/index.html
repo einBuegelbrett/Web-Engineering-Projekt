@@ -5,15 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class = "button">
-        <button onclick="getall()">Alles</button>
-        <button onclick="getSingle()">Einzelnes</button>
-        <button onclick="fDelete()">Löschen</button>
-        <button onclick="put()">Update</button>
-        <button onclick="post()">Hinzufügen</button>
-    </div>
+    <div class="button-section">
+        <button class="button-all" onclick="getall()">Alles</button>
+        <span>Zeigt alle Elemente an</span>
+      </div>
+      
+      <div class="button-section">
+        <button class="button-single" onclick="getSingle()">Einzelnes</button>
+        <span>Zeigt ein einzelnes Element an</span>
+      </div>
+      
+      <div class="button-section">
+        <button class="button-delete" onclick="fDelete()">Löschen</button>
+        <span>Löscht ein Element</span>
+      </div>
+      
+      <div class="button-section">
+        <button class="button-update" onclick="put()">Update</button>
+        <span>Aktualisiert ein Element</span>
+      </div>
+      
+      <div class="button-section">
+        <button class="button-add" onclick="post()">Hinzufügen</button>
+        <span>Fügt ein neues Element hinzu</span>
+      </div>
+
+      <h3>Nur in der Konsole!!</h3>
+      
+    <script src="script.js"></script>
 </body>
 </html>

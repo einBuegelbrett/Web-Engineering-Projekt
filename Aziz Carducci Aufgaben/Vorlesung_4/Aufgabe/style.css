@@ -1,0 +1,80 @@
+/* Allgemeine Stile */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .button-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button span {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .button-add {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .button-add:hover {
+    background-color: #2980b9;
+  }
+  
+  .button-delete {
+    background-color: red;
+    color: white;
+  }
+  
+  .button-delete:hover {
+    background-color: rgb(167, 4, 4);
+  }
+  
+  .button-update {
+    background-color: #1abc9c;
+    color: white;
+  }
+  
+  .button-update:hover {
+    background-color: #16a085;
+  }
+  
+  .button-single {
+    background-color: blue;
+    color: white;
+  }
+  
+  .button-single:hover {
+    background-color: rgb(1, 1, 182);
+  }
+  
+  .button-all {
+    background-color: turquoise;
+    color: white;
+  }
+  
+  .button-all:hover {
+    background-color: teal;
+  }
+  
+  /* Mobile-Stile */
+  @media screen and (max-width: 600px) {
+    .button-section {
+      margin-bottom: 10px;
+    }
+  }
+  
