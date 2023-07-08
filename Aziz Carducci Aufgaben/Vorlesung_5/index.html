@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>GitHub</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -10,7 +11,7 @@
         <h2>GitHub</h2>
         <form id="login-form">
             <input type="password" id="password" placeholder="Personal Access Token">
-            <button type="submit" onclick="getToken()">Get Repos</button>
+            <button type="button" id="submit-button" onclick="useToken()">Get Repos</button>
         </form>
         <div id="message"></div>
         <ul id="repos-list"></ul>
