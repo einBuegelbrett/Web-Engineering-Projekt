@@ -5,7 +5,7 @@ function getToken() {
 
   fetch('https://api.github.com/user/repos', {
     headers: {
-      'Authorization': 'Bearer ' + token 
+      'Authorization': 'Bearer ' + token
   }
   })
   .then(response => {
