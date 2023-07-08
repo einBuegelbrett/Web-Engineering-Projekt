@@ -11,12 +11,11 @@ fetch('https://pokeapi.co/api/v2/item/?limit=2050')
 .then(items => {
   itemsList = items;
 
+  // löscht die Fehler Nachricht wieder
   let select = document.getElementById("pokemon-selection");
   let errorClass = document.getElementsByClassName("error-message");
-  if(errorClass) {
-    console.log(errorClass);
-    select.removeChild(errorClass);
-    console.log(select);
+  for(let i = 0; i < errorClass.length; i++) {
+      select.removeChild(errorClass[i]);
   }
 })
 .catch(error => {
@@ -33,10 +32,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
   .then(response => response.json())
   .then(data => {
     
-    let select =  document.getElementById("pokemon-selection");
-    let errorClass =  document.getElementsByClassName("error-message");
-    if(errorClass) {
-      select.remove("error-message");
+    let select = document.getElementById("pokemon-selection");
+    let errorClass = document.getElementsByClassName("error-message");
+    for(let i = 0; i < errorClass.length; i++) {
+        select.removeChild(errorClass[i]);
     }
 
     const pokemonDropdown = document.getElementById("pokemon-dropdown");
@@ -101,10 +100,10 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             .then(data => {
               generatePokemonImage(pokemonName, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data);
 
-              let select =  document.getElementById("pokemon-selection");
-              let errorClass =  document.getElementsByClassName("error-message");
-              if(errorClass) {
-                select.remove("error-message");
+              let select = document.getElementById("pokemon-selection");
+              let errorClass = document.getElementsByClassName("error-message");
+              for(let i = 0; i < errorClass.length; i++) {
+                  select.removeChild(errorClass[i]);
               }
             })
             .catch(error => {
@@ -120,12 +119,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             .then(data => {
               generatePokemonTypes(pokemonID, FlexBoxImageAndNameAndTyps, FlexBoxNameAndTyps, data)
               
-              let select =  document.getElementById("pokemon-selection");
-              let errorClass =  document.getElementsByClassName("error-message");
-              if(errorClass) {
-                select.remove("error-message");
-              }
-
               return data;
             })
             .catch(error => {
