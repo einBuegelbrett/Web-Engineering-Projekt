@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    color:blue;
+    color: #207cec;
     text-transform: uppercase;
     justify-content: center;
     align-content: center;
@@ -27,9 +27,12 @@
 .pricing-features-item {
     border-top: 1px solid lightblue;
     font-size: 0.8em;
-    padding: 0.8em;
     margin: 0; 
-    padding: 1.5em 5em;
+    padding: 1.5em;
+    line-height: 1em;
+    height: 2em;       
+    overflow: hidden;  
+    font-weight: bold;
 }
 
 .pricing-features-item:last-of-type {
@@ -42,7 +45,7 @@
 }
 
 .pricing-price {
-    color: blue;
+    color: #207cec;
     font-size: 32px;
     font-weight: bold;
 }
@@ -85,7 +88,7 @@
 
 @media (min-width: 800px) {
     .pricing-table {
-        border: 3em solid deepskyblue;
+        border: 3em solid #54a2fb;
         flex-direction: row;
         width: 90%;
         justify-content: center;
