@@ -4,7 +4,7 @@
 }
 
 .pricing-plan {
-    padding: 30px
+    
 }
 
 .pricing-plan:nth-child(2) {
@@ -12,25 +12,39 @@
     border-right: 1px solid lightblue;
 }
 
-.pricing-features-item {
-    border-top: 1px solid lightblue;
-    text-align: center;
-    padding: 10px
-}
-
-.pricing-price {
-    border-top: 1px solid lightblue;
+.pricing-img {
+    width: 70%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .pricing-header {
-    text-align:center;
+    text-align: center;
     margin-bottom: 50px;
     color: lightgray;
 }
 
-ul {
-    list-style-type: none
-    ;
+.pricing-features {
+    list-style-type: none;
+    padding-right: 40px;
+}
+
+.pricing-features-item {
+    border-top: 1px solid lightblue;
+    text-align: center;
+    padding: 10px;
+}
+
+.pricing-features-item:nth-child(2), 
+.pricing-features-item:nth-child(4), 
+.pricing-features-item:nth-child(6) {
+    border-bottom: 1px solid lightblue;
+}
+
+.pricing-price {
+    text-align: center;
 }
 
 .pricing-button{
@@ -38,10 +52,11 @@ ul {
     border-radius: 5px;
     width:fit-content;
     display: block;
+    margin-right: auto;
+    margin-left: auto;
     border: 1px solid lightblue;
-    text-align: center;
 }
 
 .pricing-button.is-featured {
-    background-color: teal
+    background-color: teal;
 }
