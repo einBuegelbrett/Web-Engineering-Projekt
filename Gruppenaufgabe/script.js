@@ -23,7 +23,7 @@ fetch('https://pokeapi.co/api/v2/item/?limit=2050')
   let container = document.getElementById("pokemon-selection");
   let errorMessage = document.createElement("p");
   errorMessage.classList.add("error-message");
-  errorMessage.innerHTML = "couldn't load item list !"
+  errorMessage.innerHTML = "couldn't load item list !";
   container.appendChild(errorMessage);
 }); 
 
@@ -111,7 +111,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
               let container = document.getElementById("pokemon-selection");
               let errorMessage = document.createElement("p");
               errorMessage.classList.add("error-message");
-              errorMessage.innerHTML = "couldn't load Pokémon image !"
+              errorMessage.innerHTML = "couldn't load Pokémon image !";
               container.appendChild(errorMessage);
             }) 
             .then(() => fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`))
@@ -126,7 +126,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
               let container = document.getElementById("pokemon-selection");
               let errorMessage = document.createElement("p");
               errorMessage.classList.add("error-message");
-              errorMessage.innerHTML = "couldn't load Pokémon information !"
+              errorMessage.innerHTML = "couldn't load Pokémon information !";
               container.appendChild(errorMessage);
             }) 
             .then(data => generateAbilitiesDropdown(pokemonID, data))
@@ -134,8 +134,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             .then(data => generateDeleteButton(FlexBoxDeleteAndItemDropdown, data))
             .then(() => {
               generateItemDropdown(pokemonID, FlexBoxDeleteAndItemDropdown, itemsList);
-            });
-                 
+            });       
     }}
 
     function generateItemDropdown(pokemonID, FlexBoxDeleteAndItemDropdown, data) {
@@ -189,7 +188,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
             return data;
       }
 
-      // kreiert die abilities dropdown
+    // kreiert die abilities dropdown
     function generateAbilitiesDropdown(pokemonID, data) {
 
         const abilities = data.abilities;
@@ -291,7 +290,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
        FlexBoxDeleteAndItemDropdown.appendChild(removeFromTeam);
        removeFromTeam.addEventListener ("click", function() {
 
-         // pokemon vom array löschen
+         // pokemon vom team löschen
          const entirepokemon = this.parentNode.parentNode;
 
          size_team--;
@@ -389,6 +388,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=1010")
   let container = document.getElementById("pokemon-selection");
   let errorMessage = document.createElement("p");
   errorMessage.classList.add("error-message");
-  errorMessage.innerHTML = "couldn't load pokémon list !"
+  errorMessage.innerHTML = "couldn't load pokémon list !";
   container.appendChild(errorMessage);
 });
